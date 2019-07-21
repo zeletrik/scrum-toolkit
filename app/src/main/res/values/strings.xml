@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">DSM Timer</string>
+
+    <string name="base_time">Base time</string>
+    <string name="base_time_value">%s sec</string>
+
 </resources>
