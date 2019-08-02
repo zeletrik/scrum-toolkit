@@ -1,5 +1,6 @@
 package hu.zeletrik.dsmtimer
 
+import android.content.Context
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.View
@@ -14,12 +15,30 @@ import kotlinx.android.synthetic.main.activity_main.*
 import android.widget.Toast
 import android.view.KeyEvent.KEYCODE_ENTER
 import android.widget.EditText
+import android.widget.TextView
+import android.content.SharedPreferences
+import android.provider.ContactsContract.CommonDataKinds.Email
+import android.util.Log
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+
 
 
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
-    private val simpleAdapter = MemberAdapter((1..5).map { "Attendee: $it" }.toMutableList())
+    private val members = ArrayList<String>()
+    private val memberAdapter = MemberAdapter(members)
+
+    private var sharedpreferences: SharedPreferences? = null
+    private val PREFERENCE_KEY = "dsmTimer"
+    private val PREF_ATTENDEE_LIST_KEY = "attendees"
+    private val PREF_USE_LIST_KEY = "useList"
+    private val PREF_USE_FIX_NUM_KEY = "useFix"
+    private val PREF_TIME_KEY = "time"
+    private var useList: Boolean = false
+    private var useFixNumber: Boolean = false
+    private var time: Int = 60
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +55,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         recyclerView.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = simpleAdapter
+        recyclerView.adapter = memberAdapter
 
         numberPicker.minValue = 2
         numberPicker.maxValue = 25
@@ -44,15 +63,19 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         maxNumberCheckBox.setOnCheckedChangeListener { _, isChecked ->
             numberPicker.isVisible = isChecked
+            useFixNumber = isChecked
             if (isChecked) {
                 newAttendeeEditText.isVisible = !isChecked
                 addAttendeeButton.isVisible = !isChecked
                 attendeeListCheckBox.isChecked = !isChecked
                 mRecyclerView.isVisible = !isChecked
             }
+
+            saveValues()
         }
 
         attendeeListCheckBox.setOnCheckedChangeListener { _, isChecked ->
+            useList = isChecked
             newAttendeeEditText.isVisible = isChecked
             addAttendeeButton.isVisible = isChecked
             mRecyclerView.isVisible = isChecked
@@ -60,12 +83,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 numberPicker.isVisible = !isChecked
                 maxNumberCheckBox.isChecked = !isChecked
             }
+
+            saveValues()
         }
 
         attendeeName.setOnKeyListener(object : View.OnKeyListener {
             override fun onKey(v: View, keyCode: Int, event: KeyEvent): Boolean {
                 if (event.action == KeyEvent.ACTION_DOWN && keyCode == KEYCODE_ENTER) {
-                    simpleAdapter.addItem(newAttendeeEditText.text.toString())
+                    members.add(newAttendeeEditText.text.toString())
+                    memberAdapter.notifyDataSetChanged()
+                    saveValues()
                     return true
                 }
                 return false
@@ -84,10 +111,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar) {
-                Toast.makeText(
-                    this@MainActivity, "Seek bar progress is :$progressChangedValue",
-                    Toast.LENGTH_SHORT
-                ).show()
+                time = progressChangedValue
+                saveValues()
             }
         })
 
@@ -95,6 +120,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val adapter = recyclerView.adapter as MemberAdapter
                 adapter.removeAt(viewHolder.adapterPosition)
+                saveValues()
             }
         }
 
@@ -102,23 +128,69 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         itemTouchHelper.attachToRecyclerView(recyclerView)
 
         addAttendeeButton.setOnClickListener(this)
+
+        //region SharedPrefs
+        sharedpreferences = getSharedPreferences(PREFERENCE_KEY,Context.MODE_PRIVATE)
+        getValues()
+        attendeeListCheckBox.isChecked = useList
+        maxNumberCheckBox.isChecked = useFixNumber
+        simpleSeekBar.progress = time
+        //endregion
     }
 
     override fun onClick(v: View?) {
-
         when (v?.id) {
             R.id.addButton -> {
                 val newAttendeeName = findViewById<EditText>(R.id.attendeeName)
-                simpleAdapter.addItem(newAttendeeName.text.toString())
+                members.add(newAttendeeName.text.toString())
+                memberAdapter.notifyDataSetChanged()
+                saveValues()
             }
         }
 
     }
 
-    private val onNPValueChangeListener = NumberPicker.OnValueChangeListener { numberPicker, i, i1 ->
+    private val onNPValueChangeListener = NumberPicker.OnValueChangeListener { numberPicker, _, _ ->
         Toast.makeText(
             this@MainActivity,
             "selected number " + numberPicker.value, Toast.LENGTH_SHORT
         ).show()
+    }
+
+    fun saveValues() {
+        val json = Gson().toJson(members)
+
+        val editor = sharedpreferences!!.edit()
+        editor.putBoolean(PREF_USE_LIST_KEY , useList)
+        editor.putBoolean(PREF_USE_FIX_NUM_KEY , useFixNumber)
+        editor.putInt(PREF_TIME_KEY, time)
+        editor.putString(PREF_ATTENDEE_LIST_KEY, json)
+        editor.apply()
+    }
+
+    private fun getValues() {
+        if (sharedpreferences!!.contains(PREF_USE_LIST_KEY)) {
+            useList = sharedpreferences!!.getBoolean(PREF_USE_LIST_KEY, false)
+        }
+        if (sharedpreferences!!.contains(PREF_USE_FIX_NUM_KEY)) {
+            useFixNumber = sharedpreferences!!.getBoolean(PREF_USE_FIX_NUM_KEY, false)
+        }
+        if (sharedpreferences!!.contains(PREF_TIME_KEY)) {
+            time = sharedpreferences!!.getInt(PREF_TIME_KEY, 60)
+        }
+        if (sharedpreferences!!.contains(PREF_ATTENDEE_LIST_KEY)) {
+            val json = sharedpreferences!!.getString(PREF_ATTENDEE_LIST_KEY, "")
+            val saved = getList(json!!)
+
+            saved.forEach { member ->  members.add(member) }
+
+            memberAdapter.notifyDataSetChanged()
+        }
+    }
+
+
+    private fun getList(jsonArray: String): ArrayList<String> {
+        val typeOfT = TypeToken.getParameterized(ArrayList::class.java, String::class.java).type
+        return Gson().fromJson(jsonArray, typeOfT)
     }
 }
