@@ -17,33 +17,35 @@ import android.view.KeyEvent.KEYCODE_ENTER
 import android.widget.EditText
 import android.widget.TextView
 import android.content.SharedPreferences
-import android.provider.ContactsContract.CommonDataKinds.Email
 import android.util.Log
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-
-
+import android.content.Intent
+import hu.zeletrik.dsmtimer.Constants.Companion.PREFERENCE_KEY
+import hu.zeletrik.dsmtimer.Constants.Companion.PREF_ATTENDEE_LIST_KEY
+import hu.zeletrik.dsmtimer.Constants.Companion.PREF_NUM_OF_ATTENDEES_KEY
+import hu.zeletrik.dsmtimer.Constants.Companion.PREF_TIME_KEY
+import hu.zeletrik.dsmtimer.Constants.Companion.PREF_USE_FIX_NUM_KEY
+import hu.zeletrik.dsmtimer.Constants.Companion.PREF_USE_LIST_KEY
 
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private val members = ArrayList<String>()
     private val memberAdapter = MemberAdapter(members)
-
-    private var sharedpreferences: SharedPreferences? = null
-    private val PREFERENCE_KEY = "dsmTimer"
-    private val PREF_ATTENDEE_LIST_KEY = "attendees"
-    private val PREF_USE_LIST_KEY = "useList"
-    private val PREF_USE_FIX_NUM_KEY = "useFix"
-    private val PREF_TIME_KEY = "time"
+    private lateinit var sharedPreferences: SharedPreferences
     private var useList: Boolean = false
     private var useFixNumber: Boolean = false
     private var time: Int = 60
+    private var numberOfAttendees: Int = 100
+    private lateinit var numberPicker: NumberPicker
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        numberPicker = findViewById(R.id.numberPicker)
         val simpleSeekBar = findViewById<SeekBar>(R.id.baseTimeSeekBar)
         val baseTimeText = findViewById<TextView>(R.id.baseTimeValue)
         val numberPicker = findViewById<NumberPicker>(R.id.numberPicker)
@@ -52,6 +54,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         val addAttendeeButton = findViewById<Button>(R.id.addButton)
         val newAttendeeEditText = findViewById<EditText>(R.id.attendeeName)
         val mRecyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+        val mFab = findViewById<FloatingActionButton>(R.id.fab)
 
         recyclerView.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -130,12 +133,24 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         addAttendeeButton.setOnClickListener(this)
 
         //region SharedPrefs
-        sharedpreferences = getSharedPreferences(PREFERENCE_KEY,Context.MODE_PRIVATE)
+        sharedPreferences = getSharedPreferences(PREFERENCE_KEY,Context.MODE_PRIVATE)
         getValues()
         attendeeListCheckBox.isChecked = useList
         maxNumberCheckBox.isChecked = useFixNumber
         simpleSeekBar.progress = time
         //endregion
+
+        mFab.setOnClickListener {
+            saveValues()
+            if (useList) {
+                 val i = Intent(this, OptionsActivity::class.java)
+                startActivity(i)
+            } else {
+                val i = Intent(this, TimerActivity::class.java)
+                i.putExtra("numberOfAttendees", numberOfAttendees)
+                startActivity(i)
+            }
+        }
     }
 
     override fun onClick(v: View?) {
@@ -151,35 +166,39 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private val onNPValueChangeListener = NumberPicker.OnValueChangeListener { numberPicker, _, _ ->
-        Toast.makeText(
-            this@MainActivity,
-            "selected number " + numberPicker.value, Toast.LENGTH_SHORT
-        ).show()
+        numberOfAttendees = numberPicker.value
     }
 
     fun saveValues() {
         val json = Gson().toJson(members)
 
-        val editor = sharedpreferences!!.edit()
-        editor.putBoolean(PREF_USE_LIST_KEY , useList)
-        editor.putBoolean(PREF_USE_FIX_NUM_KEY , useFixNumber)
+        val editor = sharedPreferences!!.edit()
+        editor.putBoolean(PREF_USE_LIST_KEY, useList)
+        editor.putBoolean(PREF_USE_FIX_NUM_KEY, useFixNumber)
+        editor.putInt(PREF_NUM_OF_ATTENDEES_KEY, numberOfAttendees)
         editor.putInt(PREF_TIME_KEY, time)
         editor.putString(PREF_ATTENDEE_LIST_KEY, json)
         editor.apply()
     }
 
     private fun getValues() {
-        if (sharedpreferences!!.contains(PREF_USE_LIST_KEY)) {
-            useList = sharedpreferences!!.getBoolean(PREF_USE_LIST_KEY, false)
+        if (sharedPreferences.contains(PREF_USE_LIST_KEY)) {
+            useList = sharedPreferences.getBoolean(PREF_USE_LIST_KEY, false)
         }
-        if (sharedpreferences!!.contains(PREF_USE_FIX_NUM_KEY)) {
-            useFixNumber = sharedpreferences!!.getBoolean(PREF_USE_FIX_NUM_KEY, false)
+        if (sharedPreferences.contains(PREF_USE_FIX_NUM_KEY)) {
+            useFixNumber = sharedPreferences.getBoolean(PREF_USE_FIX_NUM_KEY, false)
         }
-        if (sharedpreferences!!.contains(PREF_TIME_KEY)) {
-            time = sharedpreferences!!.getInt(PREF_TIME_KEY, 60)
+        if (sharedPreferences.contains(PREF_TIME_KEY)) {
+            time = sharedPreferences.getInt(PREF_TIME_KEY, 60)
         }
-        if (sharedpreferences!!.contains(PREF_ATTENDEE_LIST_KEY)) {
-            val json = sharedpreferences!!.getString(PREF_ATTENDEE_LIST_KEY, "")
+        if (sharedPreferences.contains(PREF_NUM_OF_ATTENDEES_KEY)) {
+            numberOfAttendees = sharedPreferences.getInt(PREF_NUM_OF_ATTENDEES_KEY, 100)
+            if (numberOfAttendees <= numberPicker.maxValue) {
+                numberPicker.value = numberOfAttendees
+            }
+        }
+        if (sharedPreferences.contains(PREF_ATTENDEE_LIST_KEY)) {
+            val json = sharedPreferences.getString(PREF_ATTENDEE_LIST_KEY, "")
             val saved = getList(json!!)
 
             saved.forEach { member ->  members.add(member) }
@@ -187,7 +206,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             memberAdapter.notifyDataSetChanged()
         }
     }
-
 
     private fun getList(jsonArray: String): ArrayList<String> {
         val typeOfT = TypeToken.getParameterized(ArrayList::class.java, String::class.java).type
