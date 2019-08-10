@@ -8,4 +8,10 @@
     <string name="name_placeholder">Name</string>
     <string name="use_attendee_list">Use attendee list</string>
     <string name="use_fix_number">Use fix number of attendees</string>
+    <string name="next_person">Next person</string>
+    <string name="finish">Finish</string>
+    <string name="randomize">Randomize order</string>
+    <string name="start">Start</string>
+    <string name="vac_today">Who is here today?</string>
+    <string name="other_settings">Other settings</string>
 </resources>
