@@ -1,5 +1,8 @@
 <resources>
-    <string name="app_name">DSM Timer</string>
+    <string name="app_name">Scrum toolkit</string>
+    <string name="timer_title">Stand up</string>
+    <string name="estimate_title">Estimation</string>
+    <string name="retro_title">Retrospective</string>
 
     <string name="base_time">Base time</string>
     <string name="base_time_value">%s sec</string>
