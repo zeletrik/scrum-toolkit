@@ -1,21 +1,3 @@
 <resources>
     <string name="app_name">DSM Timer</string>
-
-    <string name="base_time">Base time</string>
-    <string name="base_time_value">%s sec</string>
-    <string name="attendees">Attendees</string>
-    <string name="add_attendee">Add attendee</string>
-    <string name="name_placeholder">Name</string>
-    <string name="use_attendee_list">Use attendee list</string>
-    <string name="use_fix_number">Use fix number of attendees</string>
-    <string name="next_person">Next person</string>
-    <string name="finish">Finish</string>
-    <string name="randomize">Randomize order</string>
-    <string name="start">Start</string>
-    <string name="vac_today">Who is here today?</string>
-    <string name="other_settings">Other settings</string>
-    <string name="no_of_members">Number of team members</string>
-    <string name="all_time">Total time</string>
-    <string name="average_time">Average time</string>
-    <string name="new_record">Horray! New average record!</string>
 </resources>
