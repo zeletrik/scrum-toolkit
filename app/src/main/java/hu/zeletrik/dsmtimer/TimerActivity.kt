@@ -1,22 +1,19 @@
 package hu.zeletrik.dsmtimer
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
 import android.graphics.Color
 import android.os.*
-import androidx.appcompat.app.AppCompatActivity
 import android.view.WindowManager
+import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
-import android.os.SystemClock
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import hu.zeletrik.dsmtimer.Constants.Companion.PREFERENCE_KEY
 import hu.zeletrik.dsmtimer.Constants.Companion.PREF_TIME_KEY
-import android.os.Build
-import androidx.appcompat.app.AlertDialog
-import android.os.Bundle
-import android.widget.Button
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.apache.commons.lang3.StringUtils
 import kotlin.random.Random
 
@@ -27,6 +24,7 @@ class TimerActivity : AppCompatActivity() {
     private lateinit var progressInfo: TextView
     private lateinit var countDownTimer: CountDownTimer
     private lateinit var sharedPreferences: SharedPreferences
+    private var measureType = MeasureType.FREE_FORM
     private var currentUser: String = StringUtils.EMPTY
     private var randomizeNeeded: Boolean = true
     private val overTimeHandler = Handler()
@@ -39,6 +37,7 @@ class TimerActivity : AppCompatActivity() {
     private var time: Int = 60
     private var counter: Int = 1
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_timer)
@@ -50,6 +49,7 @@ class TimerActivity : AppCompatActivity() {
         progressInfo = findViewById(R.id.txtProgress)
 
         if (intent.hasExtra("members")) {
+            measureType = MeasureType.FIXED_LIST
             members = intent.getStringArrayListExtra("members")
             currentUser = intent.getStringExtra("firstMember")
 
@@ -61,6 +61,7 @@ class TimerActivity : AppCompatActivity() {
 
         }
         if (intent.hasExtra("numberOfAttendees")) {
+            measureType = MeasureType.FIXED_NUMBER
             numberOfAttendees = intent.getIntExtra("numberOfAttendees", 100)
         }
 
@@ -87,9 +88,7 @@ class TimerActivity : AppCompatActivity() {
     }
 
     private fun nextMember() {
-        countDownTimer.cancel()
-        overTimeHandler.removeCallbacks(overTimeCounter)
-        values.add(Pair(currentUser, calculateTime()))
+        if (!isNextUserNeeded()) finishTimer()
 
         if (members.isNotEmpty()) {
             if (randomizeNeeded) {
@@ -97,24 +96,44 @@ class TimerActivity : AppCompatActivity() {
             }
         }
 
-        if (StringUtils.isNotBlank(currentUser)) {
-            MaterialAlertDialogBuilder(this, R.style.ThemeOverlay_DSMTimer_Dialog)
-                .setCancelable(false)
-                .setTitle("The next one is")
-                .setMessage(currentUser)
-                .setPositiveButton(getString(R.string.start)) { _, _ ->
-                    startCountDown(time)
-                }.show()
-        } else if (counter < numberOfAttendees) {
-            counter++
-            startCountDown(time)
-        } else {
-            finishTimer()
+        when {
+            StringUtils.isNotBlank(currentUser) ->
+                MaterialAlertDialogBuilder(this, R.style.ThemeOverlay_DSMTimer_Dialog)
+                    .setCancelable(false)
+                    .setTitle("The next one is")
+                    .setMessage(currentUser)
+                    .setPositiveButton(getString(R.string.start)) { _, _ ->
+                        stopTimer()
+                        values.add(Pair(currentUser, calculateTime()))
+                        startCountDown(time)
+                    }.show()
+            counter < numberOfAttendees -> {
+                stopTimer()
+                values.add(Pair(currentUser, calculateTime()))
+                counter++
+                startCountDown(time)
+            }
+            else -> finishTimer()
         }
+
+    }
+
+    private fun stopTimer() {
+        countDownTimer.cancel()
+        overTimeHandler.removeCallbacks(overTimeCounter)
+    }
+
+    private fun isNextUserNeeded(): Boolean {
+        return when(measureType) {
+             MeasureType.FREE_FORM -> true
+             MeasureType.FIXED_LIST -> members.isNotEmpty()
+             MeasureType.FIXED_NUMBER -> counter < numberOfAttendees
+
+         }
     }
 
     private fun calculateTime(): Long {
-        return time * 1000 - millisToFinish + overTime
+        return (time * 1000 - millisToFinish + overTime).toLong()
     }
 
     private fun randomize(): String {
@@ -134,17 +153,15 @@ class TimerActivity : AppCompatActivity() {
     }
 
     private fun finishTimer() {
-        var average: Long = 0
-        values.forEach { pair: Pair<String, Long> -> average += pair.second }
-        average /= values.size
+        var totalTime = 0L
+        stopTimer()
+        values.add(Pair(currentUser, calculateTime()))
+        values.forEach { pair: Pair<String, Long> -> totalTime += pair.second }
+        val i = Intent(this, SummaryActivity::class.java)
+        i.putExtra("numberOfMembers", values.size)
+        i.putExtra("totalTime", totalTime.toInt())
+        startActivity(i)
 
-        MaterialAlertDialogBuilder(this, R.style.ThemeOverlay_DSMTimer_Dialog)
-            .setCancelable(false)
-            .setTitle("Aaand it's finished with the stats of:")
-            .setMessage("Total number of attendees: ${values.size} \n The average is ${average / 1000} second")
-            .setPositiveButton(android.R.string.yes) { _, _ ->
-                finish()
-            }.show()
     }
 
     override fun onDestroy() {

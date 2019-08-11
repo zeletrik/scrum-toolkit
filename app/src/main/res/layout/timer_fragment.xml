@@ -11,10 +11,21 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"
         android:layout_marginTop="8dp"
-        android:text="@string/app_name"
-        android:textSize="36sp"
+        android:text="@string/timer_title"
         android:textColor="@android:color/white"
+        android:textSize="36sp"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/settingsButton"
+        style="@style/Widget.MaterialComponents.Button.Icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@android:color/black"
+        app:icon="@drawable/ic_settings"
+        app:iconGravity="textEnd"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -24,24 +35,36 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="18dp"
         android:text="@string/vac_today"
-        android:textSize="26sp"
         android:textColor="@android:color/white"
+        android:textSize="26sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleApp" />
 
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/chipGroup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="64dp"
-            android:layout_marginEnd="32dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/optionTitle"
-            app:chipSpacingVertical="18dp"
-            app:chipSpacingHorizontal="18dp"
-            app:singleLine="false"/>
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="32dp"
+        app:chipSpacingHorizontal="18dp"
+        app:chipSpacingVertical="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/optionTitle"
+        app:singleLine="false" />
+
+    <TextView
+        android:id="@+id/attendeeNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/optionTitle" />
 
     <TextView
         android:id="@+id/randomizeTitle"
@@ -50,8 +73,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:text="@string/other_settings"
-        android:textSize="26sp"
         android:textColor="@android:color/white"
+        android:textSize="26sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/chipGroup" />
 
@@ -61,19 +84,30 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"
         android:layout_marginTop="24dp"
+        android:checked="true"
         android:text="@string/randomize"
         android:textColor="@android:color/white"
-        app:theme="@style/CheckboxStyle"
-        android:checked="true"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/randomizeTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/randomizeTitle"
+        app:theme="@style/CheckboxStyle" />
+
+    <TextView
+        android:id="@+id/hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/randomizeCheckBox" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/startTimerFab"
         android:layout_width="55dp"
         android:layout_height="55dp"
         android:layout_marginEnd="18dp"
-        android:layout_marginBottom="18dp"
+        android:layout_marginBottom="75dp"
         android:backgroundTint="@color/colorPrimaryDark"
         android:elevation="12dp"
         android:src="@drawable/timer"

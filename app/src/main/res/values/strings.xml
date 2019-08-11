@@ -1,5 +1,8 @@
 <resources>
-    <string name="app_name">DSM Timer</string>
+    <string name="app_name">Scrum toolkit</string>
+    <string name="timer_title">Stand up</string>
+    <string name="estimate_title">Estimation</string>
+    <string name="retro_title">Retrospective</string>
 
     <string name="base_time">Base time</string>
     <string name="base_time_value">%s sec</string>
@@ -14,4 +17,8 @@
     <string name="start">Start</string>
     <string name="vac_today">Who is here today?</string>
     <string name="other_settings">Other settings</string>
+    <string name="no_of_members">Number of team members</string>
+    <string name="all_time">Total time</string>
+    <string name="average_time">Average time</string>
+    <string name="new_record">Horray! New average record!</string>
 </resources>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_estimate"
+        android:enabled="true"
+        android:icon="@drawable/ic_estimate"
+        android:title="Estimation"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_timer"
+        android:enabled="true"
+        android:icon="@drawable/ic_timer"
+        android:title="Stand up"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_retro"
+        android:enabled="true"
+        android:icon="@drawable/ic_retro"
+        android:title="Retrospective"
+        app:showAsAction="ifRoom" />
+</menu>

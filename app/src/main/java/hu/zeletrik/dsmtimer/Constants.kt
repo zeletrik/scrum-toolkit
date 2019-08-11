@@ -8,5 +8,6 @@ class Constants {
         val PREF_USE_FIX_NUM_KEY = "useFix"
         val PREF_TIME_KEY = "time"
         val PREF_NUM_OF_ATTENDEES_KEY = "numberOfAttendees"
+        val PREF_TIME_RECORD_KEY = "numberOfAttendees"
     }
 }
