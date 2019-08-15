@@ -5,8 +5,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import hu.zeletrik.dsmtimer.Constants.Companion.PREFERENCE_KEY
-import hu.zeletrik.dsmtimer.Constants.Companion.PREF_TIME_RECORD_KEY
+import hu.zeletrik.dsmtimer.util.Constants.Companion.PREFERENCE_KEY
+import hu.zeletrik.dsmtimer.util.Constants.Companion.PREF_TIME_RECORD_KEY
 
 class SummaryActivity : AppCompatActivity() {
 

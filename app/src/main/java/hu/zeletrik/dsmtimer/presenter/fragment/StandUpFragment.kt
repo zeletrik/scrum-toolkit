@@ -3,8 +3,6 @@ package hu.zeletrik.dsmtimer.presenter.fragment
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.content.res.ColorStateList
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -20,9 +18,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import hu.zeletrik.dsmtimer.*
-import hu.zeletrik.dsmtimer.Constants.Companion.PREF_NUM_OF_ATTENDEES_KEY
-import hu.zeletrik.dsmtimer.Constants.Companion.PREF_USE_FIX_NUM_KEY
-import hu.zeletrik.dsmtimer.Constants.Companion.PREF_USE_LIST_KEY
+import hu.zeletrik.dsmtimer.util.Constants
+import hu.zeletrik.dsmtimer.util.Constants.Companion.PREF_NUM_OF_ATTENDEES_KEY
+import hu.zeletrik.dsmtimer.util.Constants.Companion.PREF_USE_FIX_NUM_KEY
+import hu.zeletrik.dsmtimer.util.Constants.Companion.PREF_USE_LIST_KEY
 import org.apache.commons.lang3.StringUtils
 
 class StandUpFragment : Fragment() {

@@ -8,13 +8,13 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import hu.zeletrik.dsmtimer.util.Constants
 import kotlinx.android.synthetic.main.activity_timer_settings.*
 import java.util.*
 
@@ -153,7 +153,7 @@ class OptionsActivity : AppCompatActivity(), View.OnClickListener {
     fun saveValues() {
         val json = Gson().toJson(members)
 
-        val editor = sharedPreferences!!.edit()
+        val editor = sharedPreferences.edit()
         editor.putBoolean(Constants.PREF_USE_LIST_KEY, useList)
         editor.putBoolean(Constants.PREF_USE_FIX_NUM_KEY, useFixNumber)
         editor.putInt(Constants.PREF_NUM_OF_ATTENDEES_KEY, numberOfAttendees)

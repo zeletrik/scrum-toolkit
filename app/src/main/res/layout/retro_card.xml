@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipToPadding="false"
+    android:paddingLeft="8dp"
+    android:paddingTop="8dp"
+    android:paddingRight="8dp"
+    android:paddingBottom="8dp">
+    <LinearLayout
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="4dp"
+        android:paddingLeft="8dp"
+        android:paddingTop="5dp"
+        android:paddingRight="8dp"
+        android:paddingBottom="5dp"
+        android:translationZ="1.5dp"
+        android:background="@drawable/retro_item_background"
+        android:textAlignment="center">
+        <TextView
+            android:id="@+id/retroTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textColor="@android:color/white"
+            android:textAlignment="center"
+            android:text="2019-01-01"
+            android:textSize="12sp"
+            android:layout_weight="1"/>
+        <TextView
+            android:id="@+id/retroItemText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textColor="@android:color/white"
+            android:textAlignment="center"
+            android:text="Focus on quality"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:layout_weight="4"/>
+    </LinearLayout>
+</LinearLayout>
