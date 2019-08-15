@@ -22,4 +22,8 @@
     <string name="average_time">Average time</string>
     <string name="new_record">Horray! New average record!</string>
     <string name="send_to">Send to</string>
+    <string name="hint_specify_members">Hint: You can specify team members in the settings</string>
+    <string name="hint_fix_who_starts">Hint: To fix who starts in the random order, just select the chip above</string>
+    <string name="no_constraint">No constraint applied</string>
+    <string name="hint_specify_number_or_members">Hint: You can set fixed number or even specify team members in the settings</string>
 </resources>
