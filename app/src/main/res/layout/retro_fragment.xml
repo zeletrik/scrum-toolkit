@@ -60,5 +60,89 @@
 
     </RadioGroup>
 
+    <EditText
+        android:id="@+id/addRetroText"
+        android:backgroundTint="@android:color/white"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:labelFor="@id/recyclerView"
+        android:autofillHints="Summary"
+        android:hint="Summary"
+        android:textColorHint="@android:color/white"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textColor="@android:color/white"
+        android:shadowColor="@android:color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioRetro" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/addRetroItem"
+        style="@style/Widget.MaterialComponents.Button.Icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@android:color/white"
+        android:shadowColor="@android:color/white"
+        android:text="Add item"
+        app:icon="@drawable/add"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/addRetroText"
+        app:layout_constraintTop_toBottomOf="@+id/radioRetro" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/retroWWItemsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@android:color/holo_green_dark"
+        app:layout_constraintTop_toBottomOf="@+id/addRetroItem" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/retroCBIItemsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@android:color/holo_red_light"
+        app:layout_constraintTop_toBottomOf="@+id/retroWWItemsRecyclerView" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/retroTILItemsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@android:color/holo_orange_light"
+        app:layout_constraintTop_toBottomOf="@+id/retroCBIItemsRecyclerView" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/shareRetroItems"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginBottom="75dp"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:elevation="12dp"
+        android:src="@drawable/ic_share"
+        android:shadowColor="@android:color/white"
+        android:translationZ="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

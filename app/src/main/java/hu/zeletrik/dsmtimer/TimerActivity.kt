@@ -12,8 +12,8 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import hu.zeletrik.dsmtimer.Constants.Companion.PREFERENCE_KEY
-import hu.zeletrik.dsmtimer.Constants.Companion.PREF_TIME_KEY
+import hu.zeletrik.dsmtimer.util.Constants.Companion.PREFERENCE_KEY
+import hu.zeletrik.dsmtimer.util.Constants.Companion.PREF_TIME_KEY
 import org.apache.commons.lang3.StringUtils
 import kotlin.random.Random
 
