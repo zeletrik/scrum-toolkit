@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@android:color/black"
+    android:id="@+id/estimationCardValueHolder">
+
+    <TextView
+        android:id="@+id/estimationCardValue"
+        android:visibility="invisible"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:textSize="250sp"
+        android:textStyle="bold"
+        android:gravity="center_vertical|center_horizontal"
+        android:includeFontPadding="false"
+        android:textColor="@android:color/white"/>
+</LinearLayout>

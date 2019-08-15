@@ -16,14 +16,19 @@ import android.widget.RadioGroup
 
 class EstimateFragment : Fragment() {
 
+    private val coffee = String(Character.toChars(0x2615))
+    private val infinity = String(Character.toChars(0x267e))
     private val normalPoints: MutableList<String> =
-        arrayListOf("0", "1.5", "1", "2", "3", "5", "8", "13", "20", "40", "100")
+        arrayListOf("0", "1", "1.5", "2", "3", "5", "8", "13", "20", "40", "100", infinity, "?", coffee)
 
     private val tshirtPoints:MutableList<String> =
-        arrayListOf("XS", "S", "M", "L", "XL", "XXL")
+        arrayListOf("XS", "S", "M", "L", "XL", "XXL", infinity, "?", coffee)
 
     private val fibonacciPoints:MutableList<String> =
-        arrayListOf("0", "1", "2", "3", "5", "8", "13", "21", "34", "55", "89", "144")
+        arrayListOf("0", "1", "2", "3", "5", "8", "13", "21", "34", "55", "89", "144", infinity, "?", coffee)
+
+    private val riskPoints:MutableList<String> =
+        arrayListOf("None", "Low", "Medium", "High", "Very high", infinity, "?", coffee)
 
     private val estimatePoints:MutableList<String> = ArrayList()
 
@@ -34,7 +39,7 @@ class EstimateFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         rootView = inflater.inflate(R.layout.estimation_fragment, container, false)
         val mRecyclerView = rootView.findViewById<RecyclerView>(R.id.estimationList)
-        mRecyclerView.layoutManager = GridLayoutManager(context, 3)
+        mRecyclerView.layoutManager = GridLayoutManager(context, 2)
         mRecyclerView.adapter = adapter
 
         val radioGroup = rootView.findViewById<RadioGroup>(R.id.radioEstimate)
@@ -63,13 +68,15 @@ class EstimateFragment : Fragment() {
                         adapter.notifyDataSetChanged()
                     }
                     R.id.radioRisk -> {
-
+                        riskPoints.forEach {
+                                p: String -> estimatePoints.add(p)
+                        }
+                        adapter.notifyDataSetChanged()
                     }
                 }
             }
 
         rootView.findViewById<RadioButton>(R.id.radioNormal).isChecked = true
-
 
         return rootView
     }

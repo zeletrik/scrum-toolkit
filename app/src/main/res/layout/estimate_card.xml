@@ -21,16 +21,15 @@
         android:background="@drawable/item_background">
         <TextView
             android:id="@+id/estimateCard"
-            android:layout_width="45dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="35dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="24dp"
             android:textColor="@android:color/white"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:textAlignment="center"
             android:text="TEST"
-            android:textSize="24sp"
+            android:textSize="36sp"
             android:textStyle="bold" />
     </RelativeLayout>
 </LinearLayout>

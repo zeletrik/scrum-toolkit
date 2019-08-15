@@ -3,4 +3,11 @@
     <color name="colorPrimary">#03a9f4</color>
     <color name="colorPrimaryDark">#007ac1</color>
     <color name="colorAccent">#67daff</color>
+
+
+    <color name="risk_none">#4caf50</color>
+    <color name="risk_low">#ffeb3b</color>
+    <color name="risk_medium">#ff6f00</color>
+    <color name="risk_high">#6a1b9a</color>
+    <color name="risk_veryHigh">#b71c1c</color>
 </resources>
