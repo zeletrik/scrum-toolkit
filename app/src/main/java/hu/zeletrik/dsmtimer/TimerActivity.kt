@@ -12,8 +12,8 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import hu.zeletrik.dsmtimer.Constants.Companion.PREFERENCE_KEY
-import hu.zeletrik.dsmtimer.Constants.Companion.PREF_TIME_KEY
+import hu.zeletrik.dsmtimer.util.Constants.Companion.PREFERENCE_KEY
+import hu.zeletrik.dsmtimer.util.Constants.Companion.PREF_TIME_KEY
 import org.apache.commons.lang3.StringUtils
 import kotlin.random.Random
 
@@ -26,7 +26,6 @@ class TimerActivity : AppCompatActivity() {
     private lateinit var sharedPreferences: SharedPreferences
     private var measureType = MeasureType.FREE_FORM
     private var currentUser: String = StringUtils.EMPTY
-    private var randomizeNeeded: Boolean = true
     private val overTimeHandler = Handler()
     private val values: MutableList<Pair<String, Long>> = ArrayList()
     private var members: ArrayList<String> = ArrayList()
@@ -88,34 +87,39 @@ class TimerActivity : AppCompatActivity() {
     }
 
     private fun nextMember() {
-        if (!isNextUserNeeded()) finishTimer()
-
-        if (members.isNotEmpty()) {
-            if (randomizeNeeded) {
+        if (isNextUserNeeded()) {
+            if (members.isNotEmpty()) {
                 currentUser = randomize()
             }
-        }
 
-        when {
-            StringUtils.isNotBlank(currentUser) ->
-                MaterialAlertDialogBuilder(this, R.style.ThemeOverlay_DSMTimer_Dialog)
-                    .setCancelable(false)
-                    .setTitle("The next one is")
-                    .setMessage(currentUser)
-                    .setPositiveButton(getString(R.string.start)) { _, _ ->
-                        stopTimer()
-                        values.add(Pair(currentUser, calculateTime()))
-                        startCountDown(time)
-                    }.show()
-            counter < numberOfAttendees -> {
-                stopTimer()
-                values.add(Pair(currentUser, calculateTime()))
-                counter++
-                startCountDown(time)
+            when {
+                StringUtils.isNotBlank(currentUser) ->
+                    MaterialAlertDialogBuilder(this, R.style.ThemeOverlay_DSMTimer_Dialog)
+                        .setCancelable(false)
+                        .setTitle("The next one is")
+                        .setMessage(currentUser)
+                        .setPositiveButton(getString(R.string.start)) { _, _ ->
+                            stopTimer()
+                            values.add(Pair(currentUser, calculateTime()))
+                            startCountDown(time)
+                        }.setNeutralButton("Skip") { _, _ ->
+                            stopTimer()
+                            members.add(currentUser)
+                            nextMember()
+                        }
+
+                        .show()
+                counter < numberOfAttendees -> {
+                    stopTimer()
+                    values.add(Pair(currentUser, calculateTime()))
+                    counter++
+                    startCountDown(time)
+                }
+                else -> finishTimer()
             }
-            else -> finishTimer()
+        } else {
+            finishTimer()
         }
-
     }
 
     private fun stopTimer() {
@@ -124,12 +128,12 @@ class TimerActivity : AppCompatActivity() {
     }
 
     private fun isNextUserNeeded(): Boolean {
-        return when(measureType) {
-             MeasureType.FREE_FORM -> true
-             MeasureType.FIXED_LIST -> members.isNotEmpty()
-             MeasureType.FIXED_NUMBER -> counter < numberOfAttendees
+        return when (measureType) {
+            MeasureType.FREE_FORM -> true
+            MeasureType.FIXED_LIST -> members.isNotEmpty()
+            MeasureType.FIXED_NUMBER -> counter < numberOfAttendees
 
-         }
+        }
     }
 
     private fun calculateTime(): Long {
@@ -161,7 +165,7 @@ class TimerActivity : AppCompatActivity() {
         i.putExtra("numberOfMembers", values.size)
         i.putExtra("totalTime", totalTime.toInt())
         startActivity(i)
-
+        finish()
     }
 
     override fun onDestroy() {
