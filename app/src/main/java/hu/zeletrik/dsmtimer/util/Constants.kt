@@ -12,5 +12,6 @@ class Constants {
         const val PREF_RETRO_WW_KEY = "wentWell"
         const val PREF_RETRO_CBI_KEY = "couldBeImprove"
         const val PREF_RETRO_TIMELINE_KEY = "timeline"
+        const val PREF_CURRENT_THEME_KEY = "current_theme"
     }
 }

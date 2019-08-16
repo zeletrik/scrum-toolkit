@@ -1,16 +1,13 @@
-package hu.zeletrik.dsmtimer
+package hu.zeletrik.dsmtimer.adapter
 
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import hu.zeletrik.dsmtimer.presenter.activity.EstimationCardActivity
-import kotlinx.android.synthetic.main.estimate_card.view.*
-import androidx.cardview.widget.CardView
+import hu.zeletrik.dsmtimer.R
 
 
 class EstimateAdapter(private val items: MutableList<String>) : RecyclerView.Adapter<EstimateAdapter.VH>() {

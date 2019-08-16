@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import hu.zeletrik.dsmtimer.R
 
-class EstimationCardActivity : AppCompatActivity() {
+class EstimationCardActivity : BaseActivity() {
 
     private lateinit var valueText: TextView
     private var doubleBackToExitPressedOnce = false

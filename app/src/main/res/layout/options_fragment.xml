@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/primaryBackgroundColor"
+    tools:context=".presenter.activity.MainActivity">
+
+    <TextView
+        android:id="@+id/settingsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/settings_title"
+        android:textColor="?attr/textColor"
+        android:textSize="36sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/themeSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="18dp"
+            android:text="@string/theme_settings"
+            android:textColor="?attr/textColor"
+            android:textSize="32sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/settingsTitle" />
+
+        <RadioGroup
+            android:id="@+id/themeRadio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="18dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/themeSettings">
+
+            <RadioButton
+                android:id="@+id/radioLightTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:checked="true"
+                android:text="Light"
+                android:textColor="?attr/textColor"
+                android:theme="@style/CheckboxStyle" />
+
+            <RadioButton
+                android:id="@+id/radioDarkTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="Dark"
+                android:textColor="?attr/textColor"
+                android:theme="@style/CheckboxStyle" />
+
+
+            <RadioButton
+                android:id="@+id/radioOledTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="Oled"
+                android:textColor="?attr/textColor"
+                android:theme="@style/CheckboxStyle" />
+
+        </RadioGroup>
+
+
+        <TextView
+            android:id="@+id/dsmSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="18dp"
+            android:text="@string/timer_title"
+            android:textColor="?attr/textColor"
+            android:textSize="32sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/themeRadio" />
+
+        <TextView
+            android:id="@+id/baseTimeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="18dp"
+            android:text="@string/base_time"
+            android:textColor="?attr/textColor"
+            android:textSize="26sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dsmSettings" />
+
+        <TextView
+            android:id="@+id/baseTimeValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/base_time_value"
+            android:textColor="?attr/textColor"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/baseTimeTitle" />
+
+        <SeekBar
+            android:id="@+id/baseTimeSeekBar"
+            android:layout_width="350dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="8dp"
+            android:max="150"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/baseTimeValue" />
+
+        <TextView
+            android:id="@+id/attendeeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="18dp"
+            android:text="@string/attendees"
+            android:textColor="?attr/textColor"
+            android:textSize="26sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/baseTimeSeekBar" />
+
+        <CheckBox
+            android:id="@+id/fixNumAttendee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="18dp"
+            android:text="@string/use_fix_number"
+            android:textColor="?attr/textColor"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/attendeeTitle"
+            android:theme="@style/CheckboxStyle" />
+
+        <CheckBox
+            android:id="@+id/attendeeList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="8dp"
+            android:checked="true"
+            android:shadowColor="?attr/textColor"
+            android:text="@string/use_attendee_list"
+            android:textColor="?attr/textColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/fixNumAttendee"
+            app:layout_constraintTop_toBottomOf="@+id/attendeeTitle"
+            android:theme="@style/CheckboxStyle" />
+
+        <NumberPicker
+            android:id="@+id/numberPicker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="8dp"
+            android:theme="@style/AppTheme.Picker"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fixNumAttendee" />
+
+        <EditText
+            android:id="@+id/attendeeName"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:autofillHints="Attendee name"
+            android:backgroundTint="?attr/textColor"
+            android:ems="10"
+            android:hint="Attendee name"
+            android:inputType="textPersonName"
+            android:labelFor="@id/membersRecyclerView"
+            android:shadowColor="?attr/textColor"
+            android:textColor="?attr/textColor"
+            android:textColorHint="?attr/textColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fixNumAttendee" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/addButton"
+            style="@style/Widget.MaterialComponents.Button.Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@android:color/white"
+            android:shadowColor="@android:color/white"
+            android:text="@string/add_attendee"
+            app:icon="@drawable/add"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/attendeeName" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/membersRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addButton"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,17 +1,54 @@
 <resources xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
+    <!-- Oled application theme. -->
+    <style name="Theme_App_Oled" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="textColor">@color/text</item>
+        <item name="primaryBackgroundColor">@color/background</item>
+        <item name="primaryShadowColor">@color/colorPrimaryDark</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:navigationBarColor">@android:color/black</item>
-        <item name="android:statusBarColor">@android:color/black</item>
+        <item name="android:navigationBarColor">@color/background</item>
+        <item name="android:statusBarColor">@color/background</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="27">true</item>
         <item name="android:windowLightStatusBar">false</item>
+    </style>
+
+    <!-- Dark application theme. -->
+    <style name="Theme_App_Dark" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="textColor">@color/textDark</item>
+        <item name="primaryBackgroundColor">@color/backgroundDark</item>
+        <item name="primaryShadowColor">@color/background</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:navigationBarColor">@color/backgroundDark</item>
+        <item name="android:statusBarColor">@color/backgroundDark</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="27">true</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+
+    <!-- Light application theme. -->
+    <style name="Theme_App_Light" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="textColor">@color/textLight</item>
+        <item name="primaryBackgroundColor">@color/backgroundLight</item>
+        <item name="primaryShadowColor">@color/textLight</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:navigationBarColor">@color/backgroundLight</item>
+        <item name="android:statusBarColor">@color/backgroundLight</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="27">true</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 
     <style name="ThemeOverlay_DSMTimer_Dialog" parent="Base.ThemeOverlay.MaterialComponents.MaterialAlertDialog" tools:override="true">
@@ -31,14 +68,14 @@
     </style>
 
     <style name="AppTheme.Picker" parent="Theme.AppCompat.Light.NoActionBar" >
-        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorPrimary">?attr/textColor</item>
     </style>
 
-    <style name="CheckboxStyle" parent="AppTheme">
-        <item name="colorAccent">@android:color/white</item>
-        <item name="android:textColorSecondary">@android:color/white</item>
-        <item name="colorControlNormal">@android:color/white</item>
-        <item name="colorControlActivated">@android:color/white</item>
+    <style name="CheckboxStyle">
+        <item name="colorAccent">?attr/textColor</item>
+        <item name="android:textColorSecondary">?attr/textColor</item>
+        <item name="colorControlNormal">?attr/textColor</item>
+        <item name="colorControlActivated">?attr/textColor</item>
     </style>
 
 </resources>

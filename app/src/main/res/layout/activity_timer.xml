@@ -5,9 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/black"
+    android:background="?attr/primaryBackgroundColor"
     android:id="@+id/timerActivity"
-    tools:context=".TimerActivity">
+    tools:context=".presenter.activity.TimerActivity">
 
   <ProgressBar
         android:id="@+id/progressBar"

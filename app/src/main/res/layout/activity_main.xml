@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@android:color/black">
+    android:background="?attr/primaryBackgroundColor">
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
@@ -22,9 +22,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            app:itemBackground="@android:color/black"
-            app:itemIconTint="@color/colorPrimaryDark"
-            app:itemTextColor="@color/colorPrimaryDark"
+            android:background="?attr/primaryBackgroundColor"
+            app:itemBackground="?attr/primaryBackgroundColor"
+            app:itemIconTint="@drawable/bottom_bar_item_selector"
+            app:itemTextColor="@drawable/bottom_bar_item_selector"
             android:translationZ="10.5dp"
             app:menu="@menu/bottom_nav_menu" />
 
