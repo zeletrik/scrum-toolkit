@@ -5,9 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/black"
+    android:background="?attr/primaryBackgroundColor"
     android:id="@+id/timerActivity"
-    tools:context=".SummaryActivity">
+    tools:context=".presenter.activity.SummaryActivity">
 
     <TextView
         android:id="@+id/appTitleSummary"
@@ -17,7 +17,7 @@
         android:layout_marginTop="8dp"
         android:text="@string/timer_title"
         android:textSize="36sp"
-        android:textColor="@android:color/white"
+        android:textColor="?attr/textColor"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -29,7 +29,7 @@
         android:layout_marginTop="24dp"
         android:text="@string/no_of_members"
         android:textSize="26sp"
-        android:textColor="@android:color/white"
+        android:textColor="?attr/textColor"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appTitleSummary" />
 
@@ -40,7 +40,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="18dp"
         android:layout_marginEnd="8dp"
-        android:textColor="@android:color/white"
+        android:textColor="?attr/textColor"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,7 +54,7 @@
         android:layout_marginTop="18dp"
         android:text="@string/all_time"
         android:textSize="26sp"
-        android:textColor="@android:color/white"
+        android:textColor="?attr/textColor"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/noOfMembers" />
 
@@ -65,7 +65,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="18dp"
         android:layout_marginEnd="8dp"
-        android:textColor="@android:color/white"
+        android:textColor="?attr/textColor"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -79,7 +79,7 @@
         android:layout_marginTop="18dp"
         android:text="@string/average_time"
         android:textSize="26sp"
-        android:textColor="@android:color/white"
+        android:textColor="?attr/textColor"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/allTime" />
 
@@ -90,7 +90,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="18dp"
         android:layout_marginEnd="8dp"
-        android:textColor="@android:color/white"
+        android:textColor="?attr/textColor"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -106,7 +106,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:text="@string/new_record"
-        android:textColor="@android:color/white"
+        android:textColor="?attr/textColor"
         android:textSize="26sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

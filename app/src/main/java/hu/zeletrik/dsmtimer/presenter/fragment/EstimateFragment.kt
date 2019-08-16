@@ -8,7 +8,7 @@ import android.widget.RadioButton
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import hu.zeletrik.dsmtimer.EstimateAdapter
+import hu.zeletrik.dsmtimer.adapter.EstimateAdapter
 import hu.zeletrik.dsmtimer.R
 import android.widget.RadioGroup
 

@@ -3,6 +3,8 @@
     <string name="timer_title">Stand up</string>
     <string name="estimate_title">Estimation</string>
     <string name="retro_title">Retrospective</string>
+    <string name="settings_title">Settings</string>
+    <string name="theme_settings">Theme</string>
 
     <string name="base_time">Base time</string>
     <string name="base_time_value">%s sec</string>
@@ -13,7 +15,6 @@
     <string name="use_fix_number">Use fix number of attendees</string>
     <string name="next_person">Next person</string>
     <string name="finish">Finish</string>
-    <string name="randomize">Randomize order</string>
     <string name="start">Start</string>
     <string name="vac_today">Who is here today?</string>
     <string name="other_settings">Other settings</string>
@@ -23,7 +24,7 @@
     <string name="new_record">Horray! New average record!</string>
     <string name="send_to">Send to</string>
     <string name="hint_specify_members">Hint: You can specify team members in the settings</string>
-    <string name="hint_fix_who_starts">Hint: To fix who starts in the random order, just select the chip above</string>
+    <string name="hint_fix_who_starts">Hint: To fix who starts in the random order, just select the chip</string>
     <string name="no_constraint">No constraint applied</string>
     <string name="hint_specify_number_or_members">Hint: You can set fixed number or even specify team members in the settings</string>
 </resources>

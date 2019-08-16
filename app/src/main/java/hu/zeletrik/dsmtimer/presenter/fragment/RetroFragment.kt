@@ -19,7 +19,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import hu.zeletrik.dsmtimer.R
-import hu.zeletrik.dsmtimer.SwipeToDeleteCallback
+import hu.zeletrik.dsmtimer.util.SwipeToDeleteCallback
 import hu.zeletrik.dsmtimer.adapter.RetroAdapter
 import hu.zeletrik.dsmtimer.domain.RetroItem
 import hu.zeletrik.dsmtimer.domain.RetroItemType

@@ -1,4 +1,4 @@
-package hu.zeletrik.dsmtimer
+package hu.zeletrik.dsmtimer.domain
 
 enum class MeasureType {
     FIXED_LIST,

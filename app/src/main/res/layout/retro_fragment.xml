@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/black">
+    android:background="?attr/primaryBackgroundColor">
 
     <TextView
         android:id="@+id/estimateTitle"
@@ -12,7 +12,7 @@
         android:layout_marginStart="18dp"
         android:layout_marginTop="8dp"
         android:text="@string/retro_title"
-        android:textColor="@android:color/white"
+        android:textColor="?attr/textColor"
         android:textSize="36sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -34,8 +34,8 @@
             android:layout_marginEnd="16dp"
             android:checked="true"
             android:text="Went well"
-            android:textColor="@android:color/white"
-            app:theme="@style/CheckboxStyle" />
+            android:textColor="?attr/textColor"
+            android:theme="@style/CheckboxStyle" />
 
         <RadioButton
             android:id="@+id/radioCBI"
@@ -44,8 +44,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:text="Could be improve"
-            android:textColor="@android:color/white"
-            app:theme="@style/CheckboxStyle" />
+            android:textColor="?attr/textColor"
+            android:theme="@style/CheckboxStyle" />
 
 
         <RadioButton
@@ -55,27 +55,27 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:text="Timeline"
-            android:textColor="@android:color/white"
-            app:theme="@style/CheckboxStyle" />
+            android:textColor="?attr/textColor"
+            android:theme="@style/CheckboxStyle" />
 
     </RadioGroup>
 
     <EditText
         android:id="@+id/addRetroText"
-        android:backgroundTint="@android:color/white"
+        android:backgroundTint="?attr/textColor"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:labelFor="@id/recyclerView"
+        android:labelFor="@id/addRetroItem"
         android:autofillHints="Summary"
         android:hint="Summary"
-        android:textColorHint="@android:color/white"
+        android:textColorHint="?attr/textColor"
         android:ems="10"
         android:inputType="textPersonName"
-        android:textColor="@android:color/white"
-        android:shadowColor="@android:color/white"
+        android:textColor="?attr/textColor"
+        android:shadowColor="?attr/textColor"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioRetro" />
 
@@ -140,7 +140,7 @@
         android:backgroundTint="@color/colorPrimaryDark"
         android:elevation="12dp"
         android:src="@drawable/ic_share"
-        android:shadowColor="@android:color/white"
+        android:shadowColor="?attr/textColor"
         android:translationZ="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

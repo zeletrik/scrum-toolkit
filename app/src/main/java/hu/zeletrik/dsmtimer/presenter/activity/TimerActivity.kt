@@ -1,4 +1,4 @@
-package hu.zeletrik.dsmtimer
+package hu.zeletrik.dsmtimer.presenter.activity
 
 import android.content.Context
 import android.content.Intent
@@ -10,15 +10,16 @@ import android.view.WindowManager
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import hu.zeletrik.dsmtimer.domain.MeasureType
+import hu.zeletrik.dsmtimer.R
 import hu.zeletrik.dsmtimer.util.Constants.Companion.PREFERENCE_KEY
 import hu.zeletrik.dsmtimer.util.Constants.Companion.PREF_TIME_KEY
 import org.apache.commons.lang3.StringUtils
 import kotlin.random.Random
 
 
-class TimerActivity : AppCompatActivity() {
+class TimerActivity : BaseActivity() {
 
     private lateinit var progressBar: ProgressBar
     private lateinit var progressInfo: TextView
@@ -157,8 +158,8 @@ class TimerActivity : AppCompatActivity() {
     }
 
     private fun finishTimer() {
-        var totalTime = 0L
         stopTimer()
+        var totalTime = 0L
         values.add(Pair(currentUser, calculateTime()))
         values.forEach { pair: Pair<String, Long> -> totalTime += pair.second }
         val i = Intent(this, SummaryActivity::class.java)

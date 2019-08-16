@@ -7,8 +7,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.CheckBox
 import android.widget.TextView
 import androidx.core.view.forEach
 import androidx.fragment.app.Fragment
@@ -17,10 +15,9 @@ import com.google.android.material.chip.ChipGroup
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import hu.zeletrik.dsmtimer.MeasureType
-import hu.zeletrik.dsmtimer.OptionsActivity
+import hu.zeletrik.dsmtimer.domain.MeasureType
 import hu.zeletrik.dsmtimer.R
-import hu.zeletrik.dsmtimer.TimerActivity
+import hu.zeletrik.dsmtimer.presenter.activity.TimerActivity
 import hu.zeletrik.dsmtimer.util.Constants
 import hu.zeletrik.dsmtimer.util.Constants.Companion.PREF_NUM_OF_ATTENDEES_KEY
 import hu.zeletrik.dsmtimer.util.Constants.Companion.PREF_USE_FIX_NUM_KEY
@@ -43,9 +40,9 @@ class StandUpFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         rootView = inflater.inflate(R.layout.timer_fragment, container, false)
 
-        rootView.findViewById<Button>(R.id.settingsButton).setOnClickListener {
-            startActivity(Intent(activity, OptionsActivity::class.java))
-        }
+       /* rootView.findViewById<Button>(R.id.settingsButton).setOnClickListener {
+           startActivity(Intent(activity, OptionsActivity::class.java))
+        }*/
         chipGroup = rootView.findViewById(R.id.chipGroup)
         startTimerFab = rootView.findViewById(R.id.startTimerFab)
         title = rootView.findViewById(R.id.optionTitle)

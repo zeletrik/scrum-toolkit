@@ -1,20 +1,21 @@
-package hu.zeletrik.dsmtimer
+package hu.zeletrik.dsmtimer.presenter.activity
 
 import android.os.Bundle
 import android.view.MenuItem
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import hu.zeletrik.dsmtimer.R
 import hu.zeletrik.dsmtimer.presenter.fragment.EstimateFragment
+import hu.zeletrik.dsmtimer.presenter.fragment.OptionsFragment
 import hu.zeletrik.dsmtimer.presenter.fragment.RetroFragment
 import hu.zeletrik.dsmtimer.presenter.fragment.StandUpFragment
 import java.util.*
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     internal var prevMenuItem: MenuItem? = null
     private lateinit var viewPager: ViewPager
@@ -32,6 +33,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.action_estimate -> viewPager.currentItem = 0
                 R.id.action_timer -> viewPager.currentItem = 1
                 R.id.action_retro -> viewPager.currentItem = 2
+                R.id.action_settings -> viewPager.currentItem = 3
             }
             false
         }
@@ -57,7 +59,7 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        setupViewPager(viewPager!!)
+        setupViewPager(viewPager)
     }
 
 
@@ -65,7 +67,8 @@ class MainActivity : AppCompatActivity() {
         val adapter = ViewPagerAdapter(supportFragmentManager)
         adapter.addFragment(EstimateFragment(), "Estimation")
         adapter.addFragment(StandUpFragment(), "Stand up")
-        adapter.addFragment(RetroFragment(), "Account")
+        adapter.addFragment(RetroFragment(), "Retrospective")
+        adapter.addFragment(OptionsFragment(), "Settings")
         viewPager.adapter = adapter
     }
 
