@@ -1,4 +1,4 @@
-package hu.zeletrik.dsmtimer.presenter.activity
+package hu.zeletrik.scrumtoolkit.presenter.activity
 
 import android.os.Bundle
 import android.os.Handler
@@ -6,8 +6,7 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import hu.zeletrik.dsmtimer.R
+import hu.zeletrik.scrumtoolkit.R
 
 class EstimationCardActivity : BaseActivity() {
 

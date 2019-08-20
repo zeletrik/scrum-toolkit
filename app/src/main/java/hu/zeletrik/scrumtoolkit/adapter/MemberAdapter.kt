@@ -1,9 +1,9 @@
-package hu.zeletrik.dsmtimer.adapter
+package hu.zeletrik.scrumtoolkit.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import hu.zeletrik.dsmtimer.R
+import hu.zeletrik.scrumtoolkit.R
 import kotlinx.android.synthetic.main.row_item.view.*
 
 class MemberAdapter(private val items: MutableList<String>) : RecyclerView.Adapter<MemberAdapter.VH>() {

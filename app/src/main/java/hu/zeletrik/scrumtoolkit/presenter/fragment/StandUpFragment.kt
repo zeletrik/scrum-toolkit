@@ -1,4 +1,4 @@
-package hu.zeletrik.dsmtimer.presenter.fragment
+package hu.zeletrik.scrumtoolkit.presenter.fragment
 
 import android.content.Context
 import android.content.Intent
@@ -15,13 +15,13 @@ import com.google.android.material.chip.ChipGroup
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import hu.zeletrik.dsmtimer.domain.MeasureType
-import hu.zeletrik.dsmtimer.R
-import hu.zeletrik.dsmtimer.presenter.activity.TimerActivity
-import hu.zeletrik.dsmtimer.util.Constants
-import hu.zeletrik.dsmtimer.util.Constants.Companion.PREF_NUM_OF_ATTENDEES_KEY
-import hu.zeletrik.dsmtimer.util.Constants.Companion.PREF_USE_FIX_NUM_KEY
-import hu.zeletrik.dsmtimer.util.Constants.Companion.PREF_USE_LIST_KEY
+import hu.zeletrik.scrumtoolkit.domain.MeasureType
+import hu.zeletrik.scrumtoolkit.R
+import hu.zeletrik.scrumtoolkit.presenter.activity.TimerActivity
+import hu.zeletrik.scrumtoolkit.util.Constants
+import hu.zeletrik.scrumtoolkit.util.Constants.Companion.PREF_NUM_OF_ATTENDEES_KEY
+import hu.zeletrik.scrumtoolkit.util.Constants.Companion.PREF_USE_FIX_NUM_KEY
+import hu.zeletrik.scrumtoolkit.util.Constants.Companion.PREF_USE_LIST_KEY
 import org.apache.commons.lang3.StringUtils
 
 class StandUpFragment : Fragment() {

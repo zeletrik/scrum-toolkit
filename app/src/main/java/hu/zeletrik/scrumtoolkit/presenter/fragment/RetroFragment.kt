@@ -1,4 +1,4 @@
-package hu.zeletrik.dsmtimer.presenter.fragment
+package hu.zeletrik.scrumtoolkit.presenter.fragment
 
 import android.content.Context
 import android.content.Intent
@@ -18,12 +18,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import hu.zeletrik.dsmtimer.R
-import hu.zeletrik.dsmtimer.util.SwipeToDeleteCallback
-import hu.zeletrik.dsmtimer.adapter.RetroAdapter
-import hu.zeletrik.dsmtimer.domain.RetroItem
-import hu.zeletrik.dsmtimer.domain.RetroItemType
-import hu.zeletrik.dsmtimer.util.Constants
+import hu.zeletrik.scrumtoolkit.R
+import hu.zeletrik.scrumtoolkit.util.SwipeToDeleteCallback
+import hu.zeletrik.scrumtoolkit.adapter.RetroAdapter
+import hu.zeletrik.scrumtoolkit.domain.RetroItem
+import hu.zeletrik.scrumtoolkit.domain.RetroItemType
+import hu.zeletrik.scrumtoolkit.util.Constants
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList

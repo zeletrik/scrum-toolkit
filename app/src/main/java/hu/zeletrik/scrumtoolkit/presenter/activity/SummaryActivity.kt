@@ -1,12 +1,12 @@
-package hu.zeletrik.dsmtimer.presenter.activity
+package hu.zeletrik.scrumtoolkit.presenter.activity
 
 import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import hu.zeletrik.dsmtimer.R
-import hu.zeletrik.dsmtimer.util.Constants.Companion.PREFERENCE_KEY
-import hu.zeletrik.dsmtimer.util.Constants.Companion.PREF_TIME_RECORD_KEY
+import hu.zeletrik.scrumtoolkit.R
+import hu.zeletrik.scrumtoolkit.util.Constants.Companion.PREFERENCE_KEY
+import hu.zeletrik.scrumtoolkit.util.Constants.Companion.PREF_TIME_RECORD_KEY
 
 class SummaryActivity : BaseActivity() {
 

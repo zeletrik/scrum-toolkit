@@ -7,7 +7,7 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 29
     defaultConfig {
-        applicationId "hu.zeletrik.dsmtimer"
+        applicationId "hu.zeletrik.scrum.toolkit"
         minSdkVersion 24
         targetSdkVersion 29
         versionCode 1

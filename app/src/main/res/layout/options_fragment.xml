@@ -1,23 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/primaryBackgroundColor"
-    tools:context=".presenter.activity.MainActivity">
+    tools:context=".presenter.activity.MainActivity"
+    android:fillViewport="true"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <TextView
-        android:id="@+id/settingsTitle"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/settings_title"
-        android:textColor="?attr/textColor"
-        android:textSize="36sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:background="?attr/primaryBackgroundColor">
+
+        <TextView
+            android:id="@+id/settingsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/settings_title"
+            android:textColor="?attr/textColor"
+            android:textSize="34sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/themeSettings"
@@ -27,7 +33,7 @@
             android:layout_marginTop="18dp"
             android:text="@string/theme_settings"
             android:textColor="?attr/textColor"
-            android:textSize="32sp"
+            android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/settingsTitle" />
 
@@ -36,7 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="18dp"
+            android:paddingTop="8dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/themeSettings">
 
@@ -49,7 +55,7 @@
                 android:checked="true"
                 android:text="Light"
                 android:textColor="?attr/textColor"
-                android:theme="@style/CheckboxStyle" />
+                android:theme="@style/BoxStyle" />
 
             <RadioButton
                 android:id="@+id/radioDarkTheme"
@@ -59,7 +65,7 @@
                 android:layout_marginEnd="16dp"
                 android:text="Dark"
                 android:textColor="?attr/textColor"
-                android:theme="@style/CheckboxStyle" />
+                android:theme="@style/BoxStyle" />
 
 
             <RadioButton
@@ -70,7 +76,7 @@
                 android:layout_marginEnd="16dp"
                 android:text="Oled"
                 android:textColor="?attr/textColor"
-                android:theme="@style/CheckboxStyle" />
+                android:theme="@style/BoxStyle" />
 
         </RadioGroup>
 
@@ -83,7 +89,7 @@
             android:layout_marginTop="18dp"
             android:text="@string/timer_title"
             android:textColor="?attr/textColor"
-            android:textSize="32sp"
+            android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/themeRadio" />
 
@@ -95,7 +101,7 @@
             android:layout_marginTop="18dp"
             android:text="@string/base_time"
             android:textColor="?attr/textColor"
-            android:textSize="26sp"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/dsmSettings" />
 
@@ -133,7 +139,7 @@
             android:layout_marginTop="18dp"
             android:text="@string/attendees"
             android:textColor="?attr/textColor"
-            android:textSize="26sp"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/baseTimeSeekBar" />
 
@@ -145,9 +151,9 @@
             android:layout_marginTop="18dp"
             android:text="@string/use_fix_number"
             android:textColor="?attr/textColor"
+            android:theme="@style/BoxStyle"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/attendeeTitle"
-            android:theme="@style/CheckboxStyle" />
+            app:layout_constraintTop_toBottomOf="@+id/attendeeTitle" />
 
         <CheckBox
             android:id="@+id/attendeeList"
@@ -160,10 +166,10 @@
             android:shadowColor="?attr/textColor"
             android:text="@string/use_attendee_list"
             android:textColor="?attr/textColor"
+            android:theme="@style/BoxStyle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/fixNumAttendee"
-            app:layout_constraintTop_toBottomOf="@+id/attendeeTitle"
-            android:theme="@style/CheckboxStyle" />
+            app:layout_constraintTop_toBottomOf="@+id/attendeeTitle" />
 
         <NumberPicker
             android:id="@+id/numberPicker"
@@ -216,12 +222,13 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/membersRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="350dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addButton"/>
+            app:layout_constraintTop_toBottomOf="@+id/addButton" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

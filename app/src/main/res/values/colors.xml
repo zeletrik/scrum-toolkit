@@ -13,6 +13,10 @@
     <color name="backgroundDark">#303030</color>
     <color name="textDark">#E0E0E0</color>
 
+    <color name="drawerLightBackground">#F5F5F5</color>
+    <color name="drawerBlackBackground">#121212</color>
+    <color name="drawerDarkBackground">#424242</color>
+
     <color name="risk_none">#4caf50</color>
     <color name="risk_low">#ffeb3b</color>
     <color name="risk_medium">#ff6f00</color>

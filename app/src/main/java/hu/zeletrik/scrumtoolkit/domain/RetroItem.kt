@@ -1,4 +1,4 @@
-package hu.zeletrik.dsmtimer.domain
+package hu.zeletrik.scrumtoolkit.domain
 
 data class RetroItem(
      val time: String,

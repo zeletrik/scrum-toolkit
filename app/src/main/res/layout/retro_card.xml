@@ -14,9 +14,9 @@
         android:layout_height="wrap_content"
         android:elevation="4dp"
         android:paddingLeft="8dp"
-        android:paddingTop="5dp"
+        android:paddingTop="4dp"
         android:paddingRight="8dp"
-        android:paddingBottom="5dp"
+        android:paddingBottom="4dp"
         android:translationZ="1.5dp"
         android:background="@drawable/retro_item_background"
         android:textAlignment="center">

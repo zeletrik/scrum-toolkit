@@ -1,4 +1,4 @@
-package hu.zeletrik.dsmtimer.presenter.fragment
+package hu.zeletrik.scrumtoolkit.presenter.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,8 +8,8 @@ import android.widget.RadioButton
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import hu.zeletrik.dsmtimer.adapter.EstimateAdapter
-import hu.zeletrik.dsmtimer.R
+import hu.zeletrik.scrumtoolkit.adapter.EstimateAdapter
+import hu.zeletrik.scrumtoolkit.R
 import android.widget.RadioGroup
 
 
@@ -19,7 +19,7 @@ class EstimateFragment : Fragment() {
     private val coffee = String(Character.toChars(0x2615))
     private val infinity = String(Character.toChars(0x267e))
     private val normalPoints: MutableList<String> =
-        arrayListOf("0", "1", "1.5", "2", "3", "5", "8", "13", "20", "40", "100", infinity, "?", coffee)
+        arrayListOf("0", "1/2", "1", "2", "3", "5", "8", "13", "20", "40", "100", infinity, "?", coffee)
 
     private val tshirtPoints:MutableList<String> =
         arrayListOf("XS", "S", "M", "L", "XL", "XXL", infinity, "?", coffee)

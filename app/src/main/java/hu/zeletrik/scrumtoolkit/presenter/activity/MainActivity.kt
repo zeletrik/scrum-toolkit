@@ -1,4 +1,4 @@
-package hu.zeletrik.dsmtimer.presenter.activity
+package hu.zeletrik.scrumtoolkit.presenter.activity
 
 import android.os.Bundle
 import android.view.MenuItem
@@ -7,11 +7,11 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import hu.zeletrik.dsmtimer.R
-import hu.zeletrik.dsmtimer.presenter.fragment.EstimateFragment
-import hu.zeletrik.dsmtimer.presenter.fragment.OptionsFragment
-import hu.zeletrik.dsmtimer.presenter.fragment.RetroFragment
-import hu.zeletrik.dsmtimer.presenter.fragment.StandUpFragment
+import hu.zeletrik.scrumtoolkit.R
+import hu.zeletrik.scrumtoolkit.presenter.fragment.EstimateFragment
+import hu.zeletrik.scrumtoolkit.presenter.fragment.OptionsFragment
+import hu.zeletrik.scrumtoolkit.presenter.fragment.RetroFragment
+import hu.zeletrik.scrumtoolkit.presenter.fragment.StandUpFragment
 import java.util.*
 
 

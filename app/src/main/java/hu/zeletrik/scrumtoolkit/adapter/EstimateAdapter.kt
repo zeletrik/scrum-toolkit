@@ -1,4 +1,4 @@
-package hu.zeletrik.dsmtimer.adapter
+package hu.zeletrik.scrumtoolkit.adapter
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import hu.zeletrik.dsmtimer.presenter.activity.EstimationCardActivity
-import hu.zeletrik.dsmtimer.R
+import hu.zeletrik.scrumtoolkit.presenter.activity.EstimationCardActivity
+import hu.zeletrik.scrumtoolkit.R
 
 
 class EstimateAdapter(private val items: MutableList<String>) : RecyclerView.Adapter<EstimateAdapter.VH>() {

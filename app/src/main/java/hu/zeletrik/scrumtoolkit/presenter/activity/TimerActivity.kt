@@ -1,4 +1,4 @@
-package hu.zeletrik.dsmtimer.presenter.activity
+package hu.zeletrik.scrumtoolkit.presenter.activity
 
 import android.content.Context
 import android.content.Intent
@@ -11,10 +11,10 @@ import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import hu.zeletrik.dsmtimer.domain.MeasureType
-import hu.zeletrik.dsmtimer.R
-import hu.zeletrik.dsmtimer.util.Constants.Companion.PREFERENCE_KEY
-import hu.zeletrik.dsmtimer.util.Constants.Companion.PREF_TIME_KEY
+import hu.zeletrik.scrumtoolkit.domain.MeasureType
+import hu.zeletrik.scrumtoolkit.R
+import hu.zeletrik.scrumtoolkit.util.Constants.Companion.PREFERENCE_KEY
+import hu.zeletrik.scrumtoolkit.util.Constants.Companion.PREF_TIME_KEY
 import org.apache.commons.lang3.StringUtils
 import kotlin.random.Random
 

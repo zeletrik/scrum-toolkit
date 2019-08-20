@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="hu.zeletrik.dsmtimer">
+          package="hu.zeletrik.scrumtoolkit">
 
     <uses-permission android:name="android.permission.VIBRATE" />
     <application
@@ -10,16 +10,16 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme_App_Light">
-        <activity android:name=".presenter.activity.MainActivity">
+        <activity android:name="hu.zeletrik.scrumtoolkit.presenter.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".presenter.activity.TimerActivity" />
-        <activity android:name=".presenter.activity.SummaryActivity" />
-        <activity android:name=".presenter.activity.EstimationCardActivity" />
+        <activity android:name="hu.zeletrik.scrumtoolkit.presenter.activity.TimerActivity" />
+        <activity android:name="hu.zeletrik.scrumtoolkit.presenter.activity.SummaryActivity" />
+        <activity android:name="hu.zeletrik.scrumtoolkit.presenter.activity.EstimationCardActivity" />
     </application>
 
 </manifest>

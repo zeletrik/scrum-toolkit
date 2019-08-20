@@ -1,13 +1,13 @@
-package hu.zeletrik.dsmtimer.presenter.activity
+package hu.zeletrik.scrumtoolkit.presenter.activity
 
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import hu.zeletrik.dsmtimer.R
-import hu.zeletrik.dsmtimer.domain.ThemeMode
-import hu.zeletrik.dsmtimer.util.Constants
-import hu.zeletrik.dsmtimer.util.Constants.Companion.PREF_CURRENT_THEME_KEY
+import hu.zeletrik.scrumtoolkit.R
+import hu.zeletrik.scrumtoolkit.domain.ThemeMode
+import hu.zeletrik.scrumtoolkit.util.Constants
+import hu.zeletrik.scrumtoolkit.util.Constants.Companion.PREF_CURRENT_THEME_KEY
 import org.apache.commons.lang3.StringUtils
 
 open class BaseActivity : AppCompatActivity() {

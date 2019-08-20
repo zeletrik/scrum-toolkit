@@ -1,4 +1,4 @@
-package hu.zeletrik.dsmtimer.presenter.fragment
+package hu.zeletrik.scrumtoolkit.presenter.fragment
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -13,15 +13,14 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import hu.zeletrik.dsmtimer.adapter.MemberAdapter
-import hu.zeletrik.dsmtimer.R
-import hu.zeletrik.dsmtimer.util.SwipeToDeleteCallback
-import hu.zeletrik.dsmtimer.domain.ThemeMode
-import hu.zeletrik.dsmtimer.util.Constants
-import hu.zeletrik.dsmtimer.util.Constants.Companion.PREF_CURRENT_THEME_KEY
+import hu.zeletrik.scrumtoolkit.adapter.MemberAdapter
+import hu.zeletrik.scrumtoolkit.R
+import hu.zeletrik.scrumtoolkit.util.SwipeToDeleteCallback
+import hu.zeletrik.scrumtoolkit.domain.ThemeMode
+import hu.zeletrik.scrumtoolkit.util.Constants
+import hu.zeletrik.scrumtoolkit.util.Constants.Companion.PREF_CURRENT_THEME_KEY
 import org.apache.commons.lang3.StringUtils
 import java.util.*
 
