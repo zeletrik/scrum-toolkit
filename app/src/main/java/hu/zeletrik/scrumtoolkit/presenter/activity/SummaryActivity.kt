@@ -37,7 +37,7 @@ class SummaryActivity : BaseActivity() {
         val newRecord = averageTime < currentRecord
 
         numberOfMembersText.text = numberOfMembers.toString()
-        totalTimeText.text = calculateTimeText(636000)
+        totalTimeText.text = calculateTimeText(totalTimeMilSec)
 
 
         if (currentRecord == 100) {
@@ -46,7 +46,7 @@ class SummaryActivity : BaseActivity() {
             averageTimeText.text = "$averageTime sec [Last record: $currentRecord sec]"
         }
 
-        if (true) {
+        if (newRecord) {
             newRecordText.visibility = View.VISIBLE
             sharedPreferences
                 .edit()

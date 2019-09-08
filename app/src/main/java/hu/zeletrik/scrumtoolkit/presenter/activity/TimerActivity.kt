@@ -45,11 +45,13 @@ class TimerActivity : BaseActivity() {
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
+
         progressBar = findViewById(R.id.progressBar)
         progressInfo = findViewById(R.id.txtProgress)
 
         if (intent.hasExtra("members")) {
             measureType = MeasureType.FIXED_LIST
+            members.clear()
             members = intent.getStringArrayListExtra("members")
             currentUser = intent.getStringExtra("firstMember")
 

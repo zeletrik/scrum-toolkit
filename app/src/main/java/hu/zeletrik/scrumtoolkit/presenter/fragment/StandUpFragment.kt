@@ -7,16 +7,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.view.forEach
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import hu.zeletrik.scrumtoolkit.domain.MeasureType
 import hu.zeletrik.scrumtoolkit.R
+import hu.zeletrik.scrumtoolkit.domain.MeasureType
 import hu.zeletrik.scrumtoolkit.presenter.activity.TimerActivity
 import hu.zeletrik.scrumtoolkit.util.Constants
 import hu.zeletrik.scrumtoolkit.util.Constants.Companion.PREF_NUM_OF_ATTENDEES_KEY
@@ -34,20 +35,20 @@ class StandUpFragment : Fragment() {
     private lateinit var hint: TextView
     private lateinit var attendeeNumber: TextView
     private var firstMember: String = StringUtils.EMPTY
+    private lateinit var refreshButton: ImageView
     private val members = ArrayList<String>()
+    var isUsersRefreshed = false
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         rootView = inflater.inflate(R.layout.timer_fragment, container, false)
 
-       /* rootView.findViewById<Button>(R.id.settingsButton).setOnClickListener {
-           startActivity(Intent(activity, OptionsActivity::class.java))
-        }*/
         chipGroup = rootView.findViewById(R.id.chipGroup)
         startTimerFab = rootView.findViewById(R.id.startTimerFab)
         title = rootView.findViewById(R.id.optionTitle)
         hint = rootView.findViewById(R.id.hint)
         attendeeNumber = rootView.findViewById(R.id.attendeeNumber)
+        refreshButton = rootView.findViewById(R.id.refresh)
 
         sharedPreferences = activity!!.getSharedPreferences(Constants.PREFERENCE_KEY, Context.MODE_PRIVATE)
 
@@ -57,7 +58,6 @@ class StandUpFragment : Fragment() {
 
     private fun init() {
         attendeeNumber.visibility = View.INVISIBLE
-        chipGroup.removeAllViews()
         var measureType: MeasureType = MeasureType.FREE_FORM
 
         if (sharedPreferences.contains(PREF_USE_LIST_KEY)) {
@@ -85,6 +85,7 @@ class StandUpFragment : Fragment() {
     }
 
     private fun fixedNumber() {
+        refreshButton.visibility = View.INVISIBLE
         title.text = getString(R.string.no_of_members)
         hint.text = getString(R.string.hint_specify_members)
         var numberOfAttendees = 100
@@ -102,14 +103,22 @@ class StandUpFragment : Fragment() {
     }
 
     private fun fixedList() {
+        refreshButton.visibility = View.VISIBLE
         title.text = getString(R.string.vac_today)
         hint.text = getString(R.string.hint_fix_who_starts)
-        if (sharedPreferences.contains(Constants.PREF_ATTENDEE_LIST_KEY)) {
-            val json = sharedPreferences.getString(Constants.PREF_ATTENDEE_LIST_KEY, StringUtils.EMPTY)
-            val saved = getList(json!!)
-            saved.forEach { member -> addChipToGroup(member) }
-
+        if (!isUsersRefreshed) {
+            isUsersRefreshed = true
+            members.clear()
+            if (sharedPreferences.contains(Constants.PREF_ATTENDEE_LIST_KEY)) {
+                val json = sharedPreferences.getString(Constants.PREF_ATTENDEE_LIST_KEY, StringUtils.EMPTY)
+                val saved = getList(json!!)
+                saved.forEach { member -> members.add(member) }
+            }
         }
+
+        chipGroup.removeAllViews()
+        members.forEach { member -> addChipToGroup(member) }
+
 
         chipGroup.isSingleSelection = true
         chipGroup.setOnCheckedChangeListener { _, i ->
@@ -117,13 +126,21 @@ class StandUpFragment : Fragment() {
         }
 
         startTimerFab.setOnClickListener {
-            chipGroup.forEach { view ->
-                members.add((view as Chip).text.toString())
+            if (members.isEmpty()) {
+                Toast.makeText(context, "No user present", Toast.LENGTH_SHORT).show()
+
+            } else {
+                val timerIntent = Intent(activity, TimerActivity::class.java)
+                timerIntent.putExtra("members", members)
+                timerIntent.putExtra("firstMember", firstMember)
+                startActivity(timerIntent)
             }
-            val timerIntent = Intent(activity, TimerActivity::class.java)
-            timerIntent.putExtra("members", members)
-            timerIntent.putExtra("firstMember", firstMember)
-            startActivity(timerIntent)
+
+        }
+
+        refreshButton.setOnClickListener {
+            isUsersRefreshed = false
+            fixedList()
         }
     }
 
@@ -146,7 +163,14 @@ class StandUpFragment : Fragment() {
         chip.height = 12
         chip.textSize = 24F
         chipGroup.addView(chip as View)
-        chip.setOnCloseIconClickListener { chipGroup.removeView(chip as View) }
+        chip.setOnCloseIconClickListener {
+            chipGroup.removeView(chip as View)
+            members.remove(chip.text.toString())
+
+            if (firstMember == chip.text.toString()) {
+                firstMember = StringUtils.EMPTY
+            }
+        }
     }
 
     private fun getSelectedText(chipGroup: ChipGroup, id: Int): String {

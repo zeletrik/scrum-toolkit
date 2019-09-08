@@ -20,6 +20,7 @@ class MainActivity : BaseActivity() {
     internal var prevMenuItem: MenuItem? = null
     private lateinit var viewPager: ViewPager
     private lateinit var bottomNavigationView: BottomNavigationView
+    private val standUpFragment = StandUpFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,10 +67,16 @@ class MainActivity : BaseActivity() {
     private fun setupViewPager(viewPager: ViewPager) {
         val adapter = ViewPagerAdapter(supportFragmentManager)
         adapter.addFragment(EstimateFragment(), "Estimation")
-        adapter.addFragment(StandUpFragment(), "Stand up")
+        adapter.addFragment(standUpFragment, "Stand up")
         adapter.addFragment(RetroFragment(), "Retrospective")
         adapter.addFragment(OptionsFragment(), "Settings")
         viewPager.adapter = adapter
+    }
+
+    @Override
+    override fun onResume() {
+        standUpFragment.isUsersRefreshed = false
+        super.onResume()
     }
 
 

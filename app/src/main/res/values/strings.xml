@@ -9,7 +9,7 @@
     <string name="base_time">Base time</string>
     <string name="base_time_value">%s sec</string>
     <string name="attendees">Attendees</string>
-    <string name="add_attendee">Add attendee</string>
+    <string name="add_attendee">Add</string>
     <string name="name_placeholder">Name</string>
     <string name="use_attendee_list">Attendee list</string>
     <string name="use_fix_number">Fix team number</string>

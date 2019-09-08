@@ -1,7 +1,7 @@
 package hu.zeletrik.scrumtoolkit.domain
 
-enum class MeasureType {
-    FIXED_LIST,
-    FIXED_NUMBER,
-    FREE_FORM
+enum class MeasureType(mode: String) {
+    FIXED_LIST("fixedList"),
+    FIXED_NUMBER("fixedNumber"),
+    FREE_FORM("free")
 }

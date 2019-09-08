@@ -20,6 +20,7 @@
         <activity android:name="hu.zeletrik.scrumtoolkit.presenter.activity.TimerActivity" />
         <activity android:name="hu.zeletrik.scrumtoolkit.presenter.activity.SummaryActivity" />
         <activity android:name="hu.zeletrik.scrumtoolkit.presenter.activity.EstimationCardActivity" />
+        <activity android:name=".presenter.activity.AttendeeSettingsActivity" />
     </application>
 
 </manifest>
