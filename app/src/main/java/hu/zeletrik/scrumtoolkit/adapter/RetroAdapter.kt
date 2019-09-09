@@ -1,14 +1,12 @@
-package hu.zeletrik.dsmtimer.adapter
+package hu.zeletrik.scrumtoolkit.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import hu.zeletrik.dsmtimer.R
-import hu.zeletrik.dsmtimer.domain.RetroItem
-import java.text.SimpleDateFormat
-import java.util.*
+import hu.zeletrik.scrumtoolkit.R
+import hu.zeletrik.scrumtoolkit.domain.RetroItem
 
 class RetroAdapter(private val items: MutableList<RetroItem>) : RecyclerView.Adapter<RetroAdapter.VH>() {
 

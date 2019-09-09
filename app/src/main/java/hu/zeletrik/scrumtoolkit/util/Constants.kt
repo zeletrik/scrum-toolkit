@@ -1,4 +1,4 @@
-package hu.zeletrik.dsmtimer.util
+package hu.zeletrik.scrumtoolkit.util
 
 class Constants {
     companion object {

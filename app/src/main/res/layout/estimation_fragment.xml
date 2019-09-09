@@ -1,87 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/primaryBackgroundColor">
+    android:fillViewport="true"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".presenter.activity.MainActivity">
 
     <TextView
         android:id="@+id/estimateTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="top"
         android:layout_marginStart="18dp"
         android:layout_marginTop="8dp"
         android:text="@string/estimate_title"
         android:textColor="?attr/textColor"
-        android:textSize="36sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="34sp" />
 
-    <RadioGroup
-        android:id="@+id/radioEstimate"
-        android:layout_width="match_parent"
+    <HorizontalScrollView
+        android:id="@+id/radioEstimateScroll"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingTop="18dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/estimateTitle">
+        android:layout_below="@+id/estimateTitle"
+        android:paddingTop="8dp">
 
-        <RadioButton
-            android:id="@+id/radioNormal"
-            android:layout_width="wrap_content"
+        <RadioGroup
+            android:id="@+id/radioEstimate"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:checked="true"
-            android:text="Normal"
-            android:textColor="?attr/textColor"
-            android:theme="@style/CheckboxStyle" />
+            android:orientation="horizontal">
 
-        <RadioButton
-            android:id="@+id/radioTShirt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:text="T-shirt"
-            android:textColor="?attr/textColor"
-            android:theme="@style/CheckboxStyle" />
+            <RadioButton
+                android:id="@+id/radioNormal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:checked="true"
+                android:text="Normal"
+                android:textColor="?attr/textColor"
+                android:theme="@style/BoxStyle" />
 
-
-        <RadioButton
-            android:id="@+id/radioFibonacci"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:text="Fibonacci"
-            android:textColor="?attr/textColor"
-            android:theme="@style/CheckboxStyle" />
+            <RadioButton
+                android:id="@+id/radioTShirt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="T-shirt"
+                android:textColor="?attr/textColor"
+                android:theme="@style/BoxStyle" />
 
 
-        <RadioButton
-            android:id="@+id/radioRisk"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:text="Risk"
-            android:textColor="?attr/textColor"
-            android:theme="@style/CheckboxStyle" />
+            <RadioButton
+                android:id="@+id/radioFibonacci"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="Fibonacci"
+                android:textColor="?attr/textColor"
+                android:theme="@style/BoxStyle" />
 
-    </RadioGroup>
+
+            <RadioButton
+                android:id="@+id/radioRisk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="Risk"
+                android:textColor="?attr/textColor"
+                android:theme="@style/BoxStyle" />
+
+        </RadioGroup>
+    </HorizontalScrollView>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/estimationList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:paddingBottom="180dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioEstimate" />
+        android:paddingTop="16dp"
+        android:layout_below="@+id/radioEstimateScroll" />
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

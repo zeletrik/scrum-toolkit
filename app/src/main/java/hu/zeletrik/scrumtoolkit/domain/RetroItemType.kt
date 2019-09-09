@@ -1,4 +1,4 @@
-package hu.zeletrik.dsmtimer.domain
+package hu.zeletrik.scrumtoolkit.domain
 
 enum class RetroItemType {
     WENT_WELL,

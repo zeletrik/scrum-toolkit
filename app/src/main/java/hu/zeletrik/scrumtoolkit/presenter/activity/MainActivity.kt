@@ -1,4 +1,4 @@
-package hu.zeletrik.dsmtimer.presenter.activity
+package hu.zeletrik.scrumtoolkit.presenter.activity
 
 import android.os.Bundle
 import android.view.MenuItem
@@ -7,11 +7,11 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import hu.zeletrik.dsmtimer.R
-import hu.zeletrik.dsmtimer.presenter.fragment.EstimateFragment
-import hu.zeletrik.dsmtimer.presenter.fragment.OptionsFragment
-import hu.zeletrik.dsmtimer.presenter.fragment.RetroFragment
-import hu.zeletrik.dsmtimer.presenter.fragment.StandUpFragment
+import hu.zeletrik.scrumtoolkit.R
+import hu.zeletrik.scrumtoolkit.presenter.fragment.EstimateFragment
+import hu.zeletrik.scrumtoolkit.presenter.fragment.OptionsFragment
+import hu.zeletrik.scrumtoolkit.presenter.fragment.RetroFragment
+import hu.zeletrik.scrumtoolkit.presenter.fragment.StandUpFragment
 import java.util.*
 
 
@@ -20,6 +20,7 @@ class MainActivity : BaseActivity() {
     internal var prevMenuItem: MenuItem? = null
     private lateinit var viewPager: ViewPager
     private lateinit var bottomNavigationView: BottomNavigationView
+    private val standUpFragment = StandUpFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,10 +67,16 @@ class MainActivity : BaseActivity() {
     private fun setupViewPager(viewPager: ViewPager) {
         val adapter = ViewPagerAdapter(supportFragmentManager)
         adapter.addFragment(EstimateFragment(), "Estimation")
-        adapter.addFragment(StandUpFragment(), "Stand up")
+        adapter.addFragment(standUpFragment, "Stand up")
         adapter.addFragment(RetroFragment(), "Retrospective")
         adapter.addFragment(OptionsFragment(), "Settings")
         viewPager.adapter = adapter
+    }
+
+    @Override
+    override fun onResume() {
+        standUpFragment.isUsersRefreshed = false
+        super.onResume()
     }
 
 

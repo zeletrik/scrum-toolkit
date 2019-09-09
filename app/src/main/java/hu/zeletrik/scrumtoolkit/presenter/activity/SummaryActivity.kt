@@ -1,12 +1,12 @@
-package hu.zeletrik.dsmtimer.presenter.activity
+package hu.zeletrik.scrumtoolkit.presenter.activity
 
 import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import hu.zeletrik.dsmtimer.R
-import hu.zeletrik.dsmtimer.util.Constants.Companion.PREFERENCE_KEY
-import hu.zeletrik.dsmtimer.util.Constants.Companion.PREF_TIME_RECORD_KEY
+import hu.zeletrik.scrumtoolkit.R
+import hu.zeletrik.scrumtoolkit.util.Constants.Companion.PREFERENCE_KEY
+import hu.zeletrik.scrumtoolkit.util.Constants.Companion.PREF_TIME_RECORD_KEY
 
 class SummaryActivity : BaseActivity() {
 
@@ -37,7 +37,7 @@ class SummaryActivity : BaseActivity() {
         val newRecord = averageTime < currentRecord
 
         numberOfMembersText.text = numberOfMembers.toString()
-        totalTimeText.text = calculateTimeText(636000)
+        totalTimeText.text = calculateTimeText(totalTimeMilSec)
 
 
         if (currentRecord == 100) {
@@ -46,7 +46,7 @@ class SummaryActivity : BaseActivity() {
             averageTimeText.text = "$averageTime sec [Last record: $currentRecord sec]"
         }
 
-        if (true) {
+        if (newRecord) {
             newRecordText.visibility = View.VISIBLE
             sharedPreferences
                 .edit()

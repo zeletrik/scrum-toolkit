@@ -13,16 +13,17 @@
         android:layout_marginTop="8dp"
         android:text="@string/retro_title"
         android:textColor="?attr/textColor"
-        android:textSize="36sp"
+        android:textSize="34sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <RadioGroup
         android:id="@+id/radioRetro"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingTop="18dp"
+        android:orientation="vertical"
+        android:paddingTop="8dp"
+        android:paddingEnd="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/estimateTitle">
 
@@ -31,21 +32,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
             android:checked="true"
             android:text="Went well"
             android:textColor="?attr/textColor"
-            android:theme="@style/CheckboxStyle" />
+            android:theme="@style/BoxStyle" />
 
         <RadioButton
             android:id="@+id/radioCBI"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:text="Could be improve"
+            android:text="Could be improved"
             android:textColor="?attr/textColor"
-            android:theme="@style/CheckboxStyle" />
+            android:theme="@style/BoxStyle" />
 
 
         <RadioButton
@@ -53,19 +52,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
             android:text="Timeline"
             android:textColor="?attr/textColor"
-            android:theme="@style/CheckboxStyle" />
+            android:theme="@style/BoxStyle" />
 
     </RadioGroup>
 
     <EditText
         android:id="@+id/addRetroText"
         android:backgroundTint="?attr/textColor"
-        android:layout_width="200dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:labelFor="@id/addRetroItem"
@@ -76,15 +73,15 @@
         android:inputType="textPersonName"
         android:textColor="?attr/textColor"
         android:shadowColor="?attr/textColor"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioRetro" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/radioRetro"
+        app:layout_constraintTop_toBottomOf="@+id/estimateTitle" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/addRetroItem"
         style="@style/Widget.MaterialComponents.Button.Icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:background="@android:color/white"
@@ -92,8 +89,8 @@
         android:text="Add item"
         app:icon="@drawable/add"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/addRetroText"
-        app:layout_constraintTop_toBottomOf="@+id/radioRetro" />
+        app:layout_constraintStart_toEndOf="@+id/radioRetro"
+        app:layout_constraintTop_toBottomOf="@+id/addRetroText" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/retroWWItemsRecyclerView"

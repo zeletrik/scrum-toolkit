@@ -8,10 +8,10 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="textColor">@color/text</item>
         <item name="primaryBackgroundColor">@color/background</item>
-        <item name="primaryShadowColor">@color/colorPrimaryDark</item>
+        <item name="primaryShadowColor">@color/drawerBlackBackground</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:navigationBarColor">@color/background</item>
+        <item name="android:navigationBarColor">@color/drawerBlackBackground</item>
         <item name="android:statusBarColor">@color/background</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="27">true</item>
         <item name="android:windowLightStatusBar">false</item>
@@ -25,10 +25,10 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="textColor">@color/textDark</item>
         <item name="primaryBackgroundColor">@color/backgroundDark</item>
-        <item name="primaryShadowColor">@color/background</item>
+        <item name="primaryShadowColor">@color/drawerDarkBackground</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:navigationBarColor">@color/backgroundDark</item>
+        <item name="android:navigationBarColor">@color/drawerDarkBackground</item>
         <item name="android:statusBarColor">@color/backgroundDark</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="27">true</item>
         <item name="android:windowLightStatusBar">false</item>
@@ -42,10 +42,10 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="textColor">@color/textLight</item>
         <item name="primaryBackgroundColor">@color/backgroundLight</item>
-        <item name="primaryShadowColor">@color/textLight</item>
+        <item name="primaryShadowColor">@color/drawerLightBackground</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:navigationBarColor">@color/backgroundLight</item>
+        <item name="android:navigationBarColor">@color/drawerLightBackground</item>
         <item name="android:statusBarColor">@color/backgroundLight</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="27">true</item>
         <item name="android:windowLightStatusBar">true</item>
@@ -59,7 +59,7 @@
         <item name="android:background">@android:color/transparent</item>
         <item name="android:paddingBottom">2dp</item>
         <item name="android:textAlignment">center</item>
-        <item name="android:textSize">32sp</item>
+        <item name="android:textSize">30sp</item>
         <item name="materialAlertDialogBodyTextStyle">@style/Dialog.TextStyle</item>
     </style>
 
@@ -71,7 +71,7 @@
         <item name="android:textColorPrimary">?attr/textColor</item>
     </style>
 
-    <style name="CheckboxStyle">
+    <style name="BoxStyle">
         <item name="colorAccent">?attr/textColor</item>
         <item name="android:textColorSecondary">?attr/textColor</item>
         <item name="colorControlNormal">?attr/textColor</item>

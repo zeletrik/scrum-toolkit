@@ -1,4 +1,4 @@
-package hu.zeletrik.dsmtimer.domain
+package hu.zeletrik.scrumtoolkit.domain
 
 enum class ThemeMode(name: String) {
     LIGHT("light"),
