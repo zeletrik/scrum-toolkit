@@ -140,21 +140,17 @@ class TimerActivity : BaseActivity() {
     }
 
     private fun calculateTime(): Long {
-        return (time * 1000 - millisToFinish + overTime).toLong()
+        return (time * 1000 - millisToFinish + overTime)
     }
 
     private fun randomize(): String {
         var name = StringUtils.EMPTY
-        if (members.size < 1) {
-            finishTimer()
-        } else {
-            var index = 0
-            if (members.size > 1) {
-                index = Random.nextInt(0, members.size - 1)
-            }
-
+        if (members.isNotEmpty()) {
+            val index  = Random.nextInt(0, members.size)
             name = members[index]
             members.removeAt(index)
+        } else {
+            finishTimer()
         }
         return name
     }
