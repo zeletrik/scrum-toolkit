@@ -26,6 +26,60 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/rotateSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="18dp"
+            android:text="@string/rotate_settings"
+            android:textColor="?attr/textColor"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/settingsTitle" />
+
+        <RadioGroup
+            android:id="@+id/rotateRadio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rotateSettings">
+
+            <RadioButton
+                android:id="@+id/radioFixAuto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="Device default"
+                android:checked="true"
+                android:textColor="?attr/textColor"
+                android:theme="@style/BoxStyle" />
+
+            <RadioButton
+                android:id="@+id/radioPortrait"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="Portrait"
+                android:textColor="?attr/textColor"
+                android:theme="@style/BoxStyle" />
+
+            <RadioButton
+                android:id="@+id/radioLandscape"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="Landscape"
+                android:textColor="?attr/textColor"
+                android:theme="@style/BoxStyle" />
+        </RadioGroup>
+
+
+        <TextView
             android:id="@+id/themeSettings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -35,7 +89,7 @@
             android:textColor="?attr/textColor"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/settingsTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/rotateRadio" />
 
         <RadioGroup
             android:id="@+id/themeRadio"

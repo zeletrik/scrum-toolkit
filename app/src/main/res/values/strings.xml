@@ -5,6 +5,7 @@
     <string name="retro_title">Retrospective</string>
     <string name="settings_title">Settings</string>
     <string name="theme_settings">Theme</string>
+    <string name="rotate_settings">Screen orientation</string>
 
     <string name="base_time">Base time</string>
     <string name="base_time_value">%s sec</string>

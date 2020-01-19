@@ -11,9 +11,11 @@ import android.widget.*
 import androidx.fragment.app.Fragment
 import hu.zeletrik.scrumtoolkit.R
 import hu.zeletrik.scrumtoolkit.domain.MeasureType
+import hu.zeletrik.scrumtoolkit.domain.OrientationMode
 import hu.zeletrik.scrumtoolkit.domain.ThemeMode
 import hu.zeletrik.scrumtoolkit.presenter.activity.AttendeeSettingsActivity
 import hu.zeletrik.scrumtoolkit.util.Constants
+import hu.zeletrik.scrumtoolkit.util.Constants.Companion.PREF_CURRENT_ORIENTATION_KEY
 import hu.zeletrik.scrumtoolkit.util.Constants.Companion.PREF_CURRENT_THEME_KEY
 import org.apache.commons.lang3.StringUtils
 
@@ -88,6 +90,36 @@ class OptionsFragment : Fragment() {
             }
 
 
+        val rotateRadioGroup = rootView.findViewById<RadioGroup>(R.id.rotateRadio)
+        rotateRadioGroup.clearCheck()
+        rotateRadioGroup
+            .setOnCheckedChangeListener { _, checkedId ->
+                when (checkedId) {
+                    R.id.radioPortrait -> {
+                        val current = sharedPreferences.getString(PREF_CURRENT_ORIENTATION_KEY, StringUtils.EMPTY)
+                        if (current != OrientationMode.PORTRAIT.name) {
+                            sharedPreferences.edit().putString(PREF_CURRENT_ORIENTATION_KEY, OrientationMode.PORTRAIT.name).apply()
+                            activity!!.recreate()
+                        }
+                    }
+                    R.id.radioLandscape -> {
+                        val current = sharedPreferences.getString(PREF_CURRENT_ORIENTATION_KEY, StringUtils.EMPTY)
+                        if (current != OrientationMode.LANDSCAPE.name) {
+                            sharedPreferences.edit().putString(PREF_CURRENT_ORIENTATION_KEY, OrientationMode.LANDSCAPE.name).apply()
+                            activity!!.recreate()
+                        }
+                    }
+                    R.id.radioFixAuto -> {
+                        val current = sharedPreferences.getString(PREF_CURRENT_ORIENTATION_KEY, StringUtils.EMPTY)
+                        if (current != OrientationMode.DEVICE_DEFAULT.name) {
+                            sharedPreferences.edit().putString(PREF_CURRENT_ORIENTATION_KEY, OrientationMode.DEVICE_DEFAULT.name).apply()
+                            activity!!.recreate()
+                        }
+                    }
+                }
+            }
+
+
         val modeRadioGroup = rootView.findViewById<RadioGroup>(R.id.attendeeSettingsRadio)
         modeRadioGroup.clearCheck()
         modeRadioGroup
@@ -126,6 +158,12 @@ class OptionsFragment : Fragment() {
             ThemeMode.DARK.name -> rootView.findViewById<RadioButton>(R.id.radioDarkTheme).isChecked = true
             ThemeMode.OLED.name -> rootView.findViewById<RadioButton>(R.id.radioOledTheme).isChecked = true
             else -> rootView.findViewById<RadioButton>(R.id.radioLightTheme).isChecked = true
+        }
+
+        when (sharedPreferences.getString(PREF_CURRENT_ORIENTATION_KEY, StringUtils.EMPTY)) {
+            OrientationMode.PORTRAIT.name -> rootView.findViewById<RadioButton>(R.id.radioPortrait).isChecked = true
+            OrientationMode.LANDSCAPE.name -> rootView.findViewById<RadioButton>(R.id.radioLandscape).isChecked = true
+            else -> rootView.findViewById<RadioButton>(R.id.radioFixAuto).isChecked = true
         }
 
 
