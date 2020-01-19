@@ -7,7 +7,7 @@
     <string name="theme_settings">Theme</string>
     <string name="rotate_settings">Screen orientation</string>
 
-    <string name="base_time">Base time</string>
+    <string name="base_time">Standup base time</string>
     <string name="base_time_value">%s sec</string>
     <string name="attendees">Attendees</string>
     <string name="add_attendee">Add</string>

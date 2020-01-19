@@ -28,7 +28,7 @@
 
         <RadioGroup
             android:id="@+id/radioEstimate"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 

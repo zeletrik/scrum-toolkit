@@ -1,7 +1,8 @@
 package hu.zeletrik.scrumtoolkit.domain
 
-enum class ThemeMode(name: String) {
-    LIGHT("light"),
-    DARK("dark"),
-    OLED("oled")
+enum class ThemeMode(val text: String) {
+    AUTO("Auto"),
+    LIGHT("Light"),
+    DARK("Dark"),
+    OLED("Black")
 }
