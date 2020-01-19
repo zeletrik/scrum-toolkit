@@ -10,8 +10,8 @@ android {
         applicationId "hu.zeletrik.scrum.toolkit"
         minSdkVersion 24
         targetSdkVersion 29
-        versionCode 3
-        versionName "1.0.2-Beta"
+        versionCode 4
+        versionName "1.0.3-Beta"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
