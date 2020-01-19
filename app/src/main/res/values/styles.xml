@@ -78,4 +78,8 @@
         <item name="colorControlActivated">?attr/textColor</item>
     </style>
 
+    <style name="CardStyle">
+        <item name="cardBackgroundColor">?attr/primaryBackgroundColor</item>
+    </style>
+
 </resources>
