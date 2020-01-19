@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presenter.activity.MainActivity"
     android:fillViewport="true"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".presenter.activity.MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -25,237 +25,562 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/rotateSettings"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="18dp"
-            android:text="@string/rotate_settings"
-            android:textColor="?attr/textColor"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/settingsTitle" />
-
-        <RadioGroup
-            android:id="@+id/rotateRadio"
+        <!-- Orientation -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/orientationCardView"
+            style="@style/CardStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingTop="8dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rotateSettings">
-
-            <RadioButton
-                android:id="@+id/radioFixAuto"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:text="Device default"
-                android:checked="true"
-                android:textColor="?attr/textColor"
-                android:theme="@style/BoxStyle" />
-
-            <RadioButton
-                android:id="@+id/radioPortrait"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:text="Portrait"
-                android:textColor="?attr/textColor"
-                android:theme="@style/BoxStyle" />
-
-            <RadioButton
-                android:id="@+id/radioLandscape"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:text="Landscape"
-                android:textColor="?attr/textColor"
-                android:theme="@style/BoxStyle" />
-        </RadioGroup>
-
-
-        <TextView
-            android:id="@+id/themeSettings"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="18dp"
-            android:text="@string/theme_settings"
-            android:textColor="?attr/textColor"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rotateRadio" />
-
-        <RadioGroup
-            android:id="@+id/themeRadio"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingTop="8dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/themeSettings">
-
-            <RadioButton
-                android:id="@+id/radioLightTheme"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:checked="true"
-                android:text="Light"
-                android:textColor="?attr/textColor"
-                android:theme="@style/BoxStyle" />
-
-            <RadioButton
-                android:id="@+id/radioDarkTheme"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:text="Dark"
-                android:textColor="?attr/textColor"
-                android:theme="@style/BoxStyle" />
-
-
-            <RadioButton
-                android:id="@+id/radioOledTheme"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:text="Black"
-                android:textColor="?attr/textColor"
-                android:theme="@style/BoxStyle" />
-
-        </RadioGroup>
-
-
-        <TextView
-            android:id="@+id/dsmSettings"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="18dp"
-            android:text="@string/timer_title"
-            android:textColor="?attr/textColor"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/themeRadio" />
-
-        <TextView
-            android:id="@+id/baseTimeTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="18dp"
-            android:text="@string/base_time"
-            android:textColor="?attr/textColor"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dsmSettings" />
-
-        <TextView
-            android:id="@+id/baseTimeValue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:text="@string/base_time_value"
-            android:textColor="?attr/textColor"
-            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/baseTimeTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/settingsTitle">
 
-        <SeekBar
-            android:id="@+id/baseTimeSeekBar"
-            android:layout_width="350dp"
-            android:layout_height="0dp"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="12dp">
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/orientationInsideView"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="12dp"
+                    style="@style/CardStyle"
+                    app:cardCornerRadius="4dp"
+                    app:cardElevation="0dp"
+                    app:cardMaxElevation="0dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_screen_rotation"
+                        android:scaleType="fitCenter"/>
+
+                </androidx.cardview.widget.CardView>
+
+
+                <TextView
+                    android:id="@+id/orientationTitle"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:text="Screen orientation"
+                    android:textColor="?attr/textColor"
+                    app:layout_constraintBottom_toTopOf="@+id/currentOrientation"
+                    app:layout_constraintStart_toEndOf="@+id/orientationInsideView"
+                    app:layout_constraintTop_toTopOf="@+id/orientationInsideView" />
+
+                <TextView
+                    android:id="@+id/currentOrientation"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:text="Portrait"
+                    android:textColor="?attr/textColor"
+                    app:layout_constraintStart_toEndOf="@+id/orientationInsideView"
+                    app:layout_constraintTop_toBottomOf="@+id/orientationTitle" />
+
+                <Button
+                    android:id="@+id/orientationArrowBtn"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="12dp"
+                    android:background="@drawable/ic_keyboard_arrow_down"
+                    app:layout_constraintBottom_toBottomOf="@+id/orientationInsideView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/orientationInsideView" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/orientationExpandableView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/currentOrientation">
+
+                    <!-- Inside the expandable card view v1 -->
+                    <HorizontalScrollView
+                        android:id="@+id/scrollview_orientation_choices"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fillViewport="true"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        >
+                    <RadioGroup
+                        android:id="@+id/rotateRadio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:paddingTop="8dp">
+
+                        <RadioButton
+                            android:id="@+id/radioFixAuto"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:checked="true"
+                            android:text="Device default"
+                            android:textColor="?attr/textColor"
+                            android:theme="@style/BoxStyle" />
+
+                        <RadioButton
+                            android:id="@+id/radioPortrait"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:text="Portrait"
+                            android:textColor="?attr/textColor"
+                            android:theme="@style/BoxStyle" />
+
+                        <RadioButton
+                            android:id="@+id/radioLandscape"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:text="Landscape"
+                            android:textColor="?attr/textColor"
+                            android:theme="@style/BoxStyle" />
+                    </RadioGroup>
+                    </HorizontalScrollView>
+
+                    <!-- Inside the expandable card view v1 -->
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+        <!-- Orientation -->
+
+
+        <!-- Theme -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/themeCardView"
+            style="@style/CardStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:max="150"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/baseTimeValue" />
+            app:layout_constraintTop_toBottomOf="@+id/orientationCardView">
 
-        <TextView
-            android:id="@+id/attendeeTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="18dp"
-            android:text="@string/attendees"
-            android:textColor="?attr/textColor"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/baseTimeSeekBar" />
-
-
-        <RadioGroup
-            android:id="@+id/attendeeSettingsRadio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingTop="8dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/attendeeTitle" >
-
-            <RadioButton
-                android:id="@+id/radioFreeAttendeeList"
-                android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:checked="true"
-                android:text="No constraint"
-                android:textColor="?attr/textColor"
-                android:theme="@style/BoxStyle" />
-
-            <RadioButton
-                android:id="@+id/radioFixNumAttendee"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:text="@string/use_fix_number"
-                android:textColor="?attr/textColor"
-                android:theme="@style/BoxStyle" />
+                android:paddingBottom="12dp">
 
 
-            <RadioButton
-                android:id="@+id/radioAttendeeList"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:text="@string/use_attendee_list"
-                android:textColor="?attr/textColor"
-                android:theme="@style/BoxStyle" />
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/themeInsideView"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="12dp"
+                    style="@style/CardStyle"
+                    app:cardCornerRadius="4dp"
+                    app:cardElevation="0dp"
+                    app:cardMaxElevation="0dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-        </RadioGroup>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_theme"
+                        android:scaleType="fitCenter"/>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/setModeButton"
-            style="@style/Widget.MaterialComponents.Button.Icon"
-            android:layout_width="wrap_content"
+                </androidx.cardview.widget.CardView>
+
+
+                <TextView
+                    android:id="@+id/themeTitle"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:text="@string/theme_settings"
+                    android:textColor="?attr/textColor"
+                    app:layout_constraintBottom_toTopOf="@+id/currentTheme"
+                    app:layout_constraintStart_toEndOf="@+id/themeInsideView"
+                    app:layout_constraintTop_toTopOf="@+id/themeInsideView" />
+
+                <TextView
+                    android:id="@+id/currentTheme"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:text="Default"
+                    android:textColor="?attr/textColor"
+                    app:layout_constraintStart_toEndOf="@+id/themeInsideView"
+                    app:layout_constraintTop_toBottomOf="@+id/themeTitle" />
+
+                <Button
+                    android:id="@+id/themeArrowBtn"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="12dp"
+                    android:background="@drawable/ic_keyboard_arrow_down"
+                    app:layout_constraintBottom_toBottomOf="@+id/themeInsideView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/themeInsideView" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/themeExpandableView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/currentTheme">
+
+                    <!-- Inside the expandable card view v1 -->
+                    <HorizontalScrollView
+                        android:id="@+id/scrollview__theme_choices"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fillViewport="true"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        >
+
+                        <RadioGroup
+                            android:id="@+id/themeRadio"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingTop="8dp">
+
+                            <RadioButton
+                                android:id="@+id/radioLightTheme"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginEnd="16dp"
+                                android:checked="true"
+                                android:text="Light"
+                                android:textColor="?attr/textColor"
+                                android:theme="@style/BoxStyle" />
+
+                            <RadioButton
+                                android:id="@+id/radioDarkTheme"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginEnd="16dp"
+                                android:text="Dark"
+                                android:textColor="?attr/textColor"
+                                android:theme="@style/BoxStyle" />
+
+
+                            <RadioButton
+                                android:id="@+id/radioOledTheme"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginEnd="16dp"
+                                android:text="Black"
+                                android:textColor="?attr/textColor"
+                                android:theme="@style/BoxStyle" />
+
+                        </RadioGroup>
+
+                    </HorizontalScrollView>
+
+                    <!-- Inside the expandable card view v1 -->
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+        <!-- Theme -->
+
+
+
+        <!-- Dsm -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/dsmTimerCardView"
+            style="@style/CardStyle"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:background="@android:color/white"
-            android:shadowColor="@android:color/white"
-            android:text="@string/add_attendee"
-            app:icon="@drawable/ic_settings"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/attendeeSettingsRadio"
-            app:layout_constraintTop_toBottomOf="@+id/attendeeTitle" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/themeCardView">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="12dp">
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/dsmTimerInsideView"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="12dp"
+                    style="@style/CardStyle"
+                    app:cardCornerRadius="4dp"
+                    app:cardElevation="0dp"
+                    app:cardMaxElevation="0dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_dsm_timer"
+                        android:scaleType="fitCenter"/>
+
+                </androidx.cardview.widget.CardView>
+
+
+                <TextView
+                    android:id="@+id/dsmTimerTitle"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:text="@string/base_time"
+                    android:textColor="?attr/textColor"
+                    app:layout_constraintBottom_toTopOf="@+id/baseTimeValue"
+                    app:layout_constraintStart_toEndOf="@+id/dsmTimerInsideView"
+                    app:layout_constraintTop_toTopOf="@+id/dsmTimerInsideView" />
+
+                <TextView
+                    android:id="@+id/baseTimeValue"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:text="@string/base_time_value"
+                    android:textColor="?attr/textColor"
+                    app:layout_constraintStart_toEndOf="@+id/dsmTimerInsideView"
+                    app:layout_constraintTop_toBottomOf="@+id/dsmTimerTitle" />
+
+                <Button
+                    android:id="@+id/dsmTimerArrowBtn"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="12dp"
+                    android:background="@drawable/ic_keyboard_arrow_down"
+                    app:layout_constraintBottom_toBottomOf="@+id/dsmTimerInsideView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/dsmTimerInsideView" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/dsmTimerExpandableView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/baseTimeValue">
+
+                    <!-- Inside the expandable card view v1 -->
+                    <SeekBar
+                        android:id="@+id/baseTimeSeekBar"
+                        android:layout_width="350dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="18dp"
+                        android:layout_marginEnd="8dp"
+                        android:max="150"
+
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+                    <!-- Inside the expandable card view v1 -->
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+        <!-- Dsm -->
+
+
+        <!-- Orientation -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/attendeesCardView"
+            style="@style/CardStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dsmTimerCardView">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="12dp">
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/attendeesInsideView"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="12dp"
+                style="@style/CardStyle"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="0dp"
+                app:cardMaxElevation="0dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_attendees"
+                    android:scaleType="fitCenter"/>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <TextView
+                android:id="@+id/attendeesTitle"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="@string/attendees"
+                android:textColor="?attr/textColor"
+                app:layout_constraintBottom_toTopOf="@+id/currentAttendeesSetting"
+                app:layout_constraintStart_toEndOf="@+id/attendeesInsideView"
+                app:layout_constraintTop_toTopOf="@+id/attendeesInsideView" />
+
+            <TextView
+                android:id="@+id/currentAttendeesSetting"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="attendees"
+                android:textColor="?attr/textColor"
+                app:layout_constraintStart_toEndOf="@+id/attendeesInsideView"
+                app:layout_constraintTop_toBottomOf="@+id/attendeesTitle" />
+
+            <Button
+                android:id="@+id/attendeesArrowBtn"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/ic_keyboard_arrow_down"
+                app:layout_constraintBottom_toBottomOf="@+id/attendeesInsideView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/attendeesInsideView" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/attendeesExpandableView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:paddingBottom="12dp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/currentAttendeesSetting">
+
+                <!-- Inside the expandable card view v1 -->
+                <HorizontalScrollView
+                    android:id="@+id/scrollview_attendees_choices"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fillViewport="true"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    >
+                    <RadioGroup
+                        android:id="@+id/attendeeSettingsRadio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingTop="8dp">
+
+                        <RadioButton
+                            android:id="@+id/radioFreeAttendeeList"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:checked="true"
+                            android:text="No constraint"
+                            android:textColor="?attr/textColor"
+                            android:theme="@style/BoxStyle" />
+
+                        <RadioButton
+                            android:id="@+id/radioFixNumAttendee"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:text="@string/use_fix_number"
+                            android:textColor="?attr/textColor"
+                            android:theme="@style/BoxStyle" />
+
+
+                        <RadioButton
+                            android:id="@+id/radioAttendeeList"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:text="@string/use_attendee_list"
+                            android:textColor="?attr/textColor"
+                            android:theme="@style/BoxStyle" />
+
+                    </RadioGroup>
+                </HorizontalScrollView>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/setModeButton"
+                    style="@style/Widget.MaterialComponents.Button.Icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@android:color/white"
+                    android:shadowColor="@android:color/white"
+                    android:text="@string/add_attendee"
+                    app:icon="@drawable/ic_settings"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/scrollview_attendees_choices"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <!-- Inside the expandable card view v1 -->
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+    <!-- Attendees -->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

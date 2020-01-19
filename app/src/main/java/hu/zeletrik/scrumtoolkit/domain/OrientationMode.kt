@@ -1,7 +1,7 @@
 package hu.zeletrik.scrumtoolkit.domain
 
-enum class OrientationMode(value: String) {
-    DEVICE_DEFAULT("default"),
-    PORTRAIT("portrait"),
-    LANDSCAPE("landscape")
+enum class OrientationMode(val text: String) {
+    DEVICE_DEFAULT("Default"),
+    PORTRAIT("Portrait"),
+    LANDSCAPE("Landscape")
 }

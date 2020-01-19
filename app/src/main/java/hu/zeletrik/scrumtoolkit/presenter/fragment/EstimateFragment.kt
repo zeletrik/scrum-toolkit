@@ -12,8 +12,6 @@ import hu.zeletrik.scrumtoolkit.adapter.EstimateAdapter
 import hu.zeletrik.scrumtoolkit.R
 import android.widget.RadioGroup
 
-
-
 class EstimateFragment : Fragment() {
 
     private val coffee = String(Character.toChars(0x2615))
