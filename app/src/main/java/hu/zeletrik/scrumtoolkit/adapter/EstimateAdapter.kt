@@ -10,10 +10,12 @@ import hu.zeletrik.scrumtoolkit.presenter.activity.EstimationCardActivity
 import hu.zeletrik.scrumtoolkit.R
 
 
-class EstimateAdapter(private val items: MutableList<String>) : RecyclerView.Adapter<EstimateAdapter.VH>() {
+class EstimateAdapter(private val items: MutableList<String>) :
+    RecyclerView.Adapter<EstimateAdapter.VH>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.estimate_card, parent, false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.estimate_card, parent, false)
         return VH(view)
     }
 

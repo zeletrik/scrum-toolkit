@@ -10,17 +10,17 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme_App_Light">
-        <activity android:name="hu.zeletrik.scrumtoolkit.presenter.activity.MainActivity">
+        <activity android:name="hu.zeletrik.scrumtoolkit.presenter.activity.MainActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name="hu.zeletrik.scrumtoolkit.presenter.activity.TimerActivity" />
-        <activity android:name="hu.zeletrik.scrumtoolkit.presenter.activity.SummaryActivity" />
-        <activity android:name="hu.zeletrik.scrumtoolkit.presenter.activity.EstimationCardActivity" />
-        <activity android:name=".presenter.activity.AttendeeSettingsActivity" />
+        <activity android:name="hu.zeletrik.scrumtoolkit.presenter.activity.TimerActivity" android:exported="false" />
+        <activity android:name="hu.zeletrik.scrumtoolkit.presenter.activity.SummaryActivity" android:exported="false" />
+        <activity android:name="hu.zeletrik.scrumtoolkit.presenter.activity.EstimationCardActivity" android:exported="false" />
+        <activity android:name=".presenter.activity.AttendeeSettingsActivity" android:exported="false" />
     </application>
 
 </manifest>

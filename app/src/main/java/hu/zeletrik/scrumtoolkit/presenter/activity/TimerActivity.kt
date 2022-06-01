@@ -52,8 +52,8 @@ class TimerActivity : BaseActivity() {
         if (intent.hasExtra("members")) {
             measureType = MeasureType.FIXED_LIST
             members.clear()
-            members = intent.getStringArrayListExtra("members")
-            currentUser = intent.getStringExtra("firstMember")
+            members = intent.getStringArrayListExtra("members") as ArrayList<String>
+            currentUser = intent.getStringExtra("firstMember").toString()
 
             if (StringUtils.isNotBlank(currentUser)) {
                 members.removeAt(members.indexOf(currentUser))
