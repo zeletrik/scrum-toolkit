@@ -23,8 +23,6 @@ import hu.zeletrik.scrumtoolkit.util.Constants.Companion.PREF_CURRENT_ORIENTATIO
 import hu.zeletrik.scrumtoolkit.util.Constants.Companion.PREF_CURRENT_THEME_KEY
 import org.apache.commons.lang3.StringUtils
 
-
-
 class OptionsFragment : Fragment() {
 
     private lateinit var rootView: View

@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import hu.zeletrik.scrumtoolkit.R
 import hu.zeletrik.scrumtoolkit.domain.RetroItem
 
-class RetroAdapter(private val items: MutableList<RetroItem>) : RecyclerView.Adapter<RetroAdapter.VH>() {
+class RetroAdapter(private val items: MutableList<RetroItem>) :
+    RecyclerView.Adapter<RetroAdapter.VH>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.retro_card, parent, false)
